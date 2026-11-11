@@ -1,0 +1,758 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:x="urn:schemas-microsoft-com:office:excel"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1251">
+<meta name=ProgId content=Excel.Sheet>
+<meta name=Generator content="Microsoft Excel 14">
+<link id=Main-File rel=Main-File href="../Full_IT_Base.htm">
+<link rel=File-List href=filelist.xml>
+<link rel=Stylesheet href=stylesheet.css>
+<style>
+<!--table
+	{mso-displayed-decimal-separator:"\,";
+	mso-displayed-thousand-separator:" ";}
+@page
+	{margin:1.0in .75in 1.0in .75in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;}
+-->
+</style>
+<![if !supportTabStrip]><script language="JavaScript">
+<!--
+function fnUpdateTabs()
+ {
+  if (parent.window.g_iIEVer>=4) {
+   if (parent.document.readyState=="complete"
+    && parent.frames['frTabs'].document.readyState=="complete")
+   parent.fnSetActiveSheet(9);
+  else
+   window.setTimeout("fnUpdateTabs();",150);
+ }
+}
+
+if (window.name!="frSheet")
+ window.location.replace("../Full_IT_Base.htm");
+else
+ fnUpdateTabs();
+//-->
+</script>
+<![endif]>
+</head>
+
+<body link=blue vlink=purple>
+
+<table border=0 cellpadding=0 cellspacing=0 width=1848 style='border-collapse:
+ collapse;table-layout:fixed;width:1388pt'>
+ <col width=35 style='mso-width-source:userset;mso-width-alt:1280;width:26pt'>
+ <col width=210 style='mso-width-source:userset;mso-width-alt:7680;width:158pt'>
+ <col width=238 style='mso-width-source:userset;mso-width-alt:8704;width:179pt'>
+ <col width=84 style='mso-width-source:userset;mso-width-alt:3072;width:63pt'>
+ <col width=182 style='mso-width-source:userset;mso-width-alt:6656;width:137pt'>
+ <col width=91 style='mso-width-source:userset;mso-width-alt:3328;width:68pt'>
+ <col width=406 style='mso-width-source:userset;mso-width-alt:14848;width:305pt'>
+ <col width=364 style='mso-width-source:userset;mso-width-alt:13312;width:273pt'>
+ <col width=238 style='mso-width-source:userset;mso-width-alt:8704;width:179pt'>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl65 align=left width=35 style='height:15.0pt;width:26pt'>№</td>
+  <td class=xl65 align=left width=210 style='width:158pt'>Категория</td>
+  <td class=xl65 align=left width=238 style='width:179pt'>Название</td>
+  <td class=xl65 align=left width=84 style='width:63pt'>Тип</td>
+  <td class=xl65 align=left width=182 style='width:137pt'>ОС</td>
+  <td class=xl65 align=left width=91 style='width:68pt'>Приоритет</td>
+  <td class=xl65 align=left width=406 style='width:305pt'>Назначение</td>
+  <td class=xl65 align=left width=364 style='width:273pt'>Документация /
+  официальный источник</td>
+  <td class=xl65 align=left width=238 style='width:179pt'>Источники</td>
+ </tr>
+ <tr height=60 style='height:45.0pt'>
+  <td height=60 align=right style='height:45.0pt'>1</td>
+  <td class=xl66 align=left width=210 style='width:158pt'>Резервное копирование</td>
+  <td class=xl66 align=left width=238 style='width:179pt'>BorgBackup</td>
+  <td class=xl66 align=left width=84 style='width:63pt'>Программа</td>
+  <td class=xl66 align=left width=182 style='width:137pt'>FreeBSD, Linux, macOS</td>
+  <td class=xl66 align=left width=91 style='width:68pt'>&#128308; Высокий</td>
+  <td class=xl66 align=left width=406 style='width:305pt'>Программа
+  дедуплицирующего резервного копирования с шифрованием AES-256 и сжатием ZSTD.
+  Золотой стандарт бэкапов Linux-серверов.</td>
+  <td class=xl67 align=left width=364 style='width:273pt'><a
+  href="https://borgbackup.readthedocs.io/" target="_parent"><span
+  style='color:#0563C1;font-family:Calibri;mso-generic-font-family:auto;
+  mso-font-charset:0'>https://borgbackup.readthedocs.io/</span></a></td>
+  <td class=xl66 align=left width=238 style='width:179pt'>Admin_Full_Map,
+  SysAdmin_Full_List, Technologies_Programs</td>
+ </tr>
+ <tr height=60 style='height:45.0pt'>
+  <td height=60 align=right style='height:45.0pt'>2</td>
+  <td class=xl66 align=left width=210 style='width:158pt'>Резервное копирование</td>
+  <td class=xl66 align=left width=238 style='width:179pt'>restic</td>
+  <td class=xl66 align=left width=84 style='width:63pt'>Программа</td>
+  <td class=xl66 align=left width=182 style='width:137pt'>FreeBSD, Linux,
+  Windows, macOS</td>
+  <td class=xl66 align=left width=91 style='width:68pt'>&#128308; Высокий</td>
+  <td class=xl66 align=left width=406 style='width:305pt'>Быстрая и безопасная
+  утилита бэкапа без внешних зависимостей. Поддерживает прямое сохранение
+  снапшотов в облачные бакеты S3/MinIO.</td>
+  <td class=xl67 align=left width=364 style='width:273pt'><a
+  href="https://restic.readthedocs.io/" target="_parent"><span
+  style='color:#0563C1;font-family:Calibri;mso-generic-font-family:auto;
+  mso-font-charset:0'>https://restic.readthedocs.io/</span></a></td>
+  <td class=xl66 align=left width=238 style='width:179pt'>Admin_Full_Map,
+  SysAdmin_Full_List, Technologies_Programs</td>
+ </tr>
+ <tr height=60 style='height:45.0pt'>
+  <td height=60 align=right style='height:45.0pt'>3</td>
+  <td class=xl66 align=left width=210 style='width:158pt'>Резервное копирование</td>
+  <td class=xl66 align=left width=238 style='width:179pt'>rsync</td>
+  <td class=xl66 align=left width=84 style='width:63pt'>Программа</td>
+  <td class=xl66 align=left width=182 style='width:137pt'>FreeBSD, Linux,
+  Windows, macOS</td>
+  <td class=xl66 align=left width=91 style='width:68pt'>&#128308; Высокий</td>
+  <td class=xl66 align=left width=406 style='width:305pt'>Утилита
+  инкрементальной передачи и синхронизации файлов поверх SSH с
+  дельта-алгоритмом передачи только изменившихся блоков.</td>
+  <td class=xl67 align=left width=364 style='width:273pt'><a
+  href="https://download.samba.org/pub/rsync/rsync.html" target="_parent"><span
+  style='color:#0563C1;font-family:Calibri;mso-generic-font-family:auto;
+  mso-font-charset:0'>https://download.samba.org/pub/rsync/rsync.html</span></a></td>
+  <td class=xl66 align=left width=238 style='width:179pt'>Admin_Full_Map,
+  IT_Mega_Matrix, SysAdmin_Full_List, Technologies_Programs</td>
+ </tr>
+ <tr height=80 style='height:60.0pt'>
+  <td height=80 align=right style='height:60.0pt'>4</td>
+  <td class=xl66 align=left width=210 style='width:158pt'>Резервное копирование</td>
+  <td class=xl66 align=left width=238 style='width:179pt'>Veeam Backup &amp;
+  Replication</td>
+  <td class=xl66 align=left width=84 style='width:63pt'>Программа</td>
+  <td class=xl66 align=left width=182 style='width:137pt'>Windows</td>
+  <td class=xl66 align=left width=91 style='width:68pt'>&#128308; Высокий</td>
+  <td class=xl66 align=left width=406 style='width:305pt'>Промышленный стандарт
+  резервного копирования виртуальных машин VMware vSphere, Hyper-V, Nutanix и
+  физических серверов.</td>
+  <td class=xl67 align=left width=364 style='width:273pt'><a
+  href="https://www.veeam.com/ru/documentation.html" target="_parent"><span
+  style='color:#0563C1;font-family:Calibri;mso-generic-font-family:auto;
+  mso-font-charset:0'>https://www.veeam.com/ru/documentation.html</span></a></td>
+  <td class=xl66 align=left width=238 style='width:179pt'>Admin_Full_Map,
+  SysAdmin_Full_List, Technologies_Programs, Tools_Roadmap</td>
+ </tr>
+ <tr height=40 style='height:30.0pt'>
+  <td height=40 align=right style='height:30.0pt'>5</td>
+  <td class=xl66 align=left width=210 style='width:158pt'>Резервное копирование</td>
+  <td class=xl66 align=left width=238 style='width:179pt'>Duplicati</td>
+  <td class=xl66 align=left width=84 style='width:63pt'>Программа</td>
+  <td class=xl66 align=left width=182 style='width:137pt'>Linux, Windows, macOS</td>
+  <td class=xl66 align=left width=91 style='width:68pt'>&#128993; Средний</td>
+  <td class=xl66 align=left width=406 style='width:305pt'>Бэкап с шифрованием в
+  облака через GUI</td>
+  <td class=xl67 align=left width=364 style='width:273pt'><a
+  href="https://duplicati.readthedocs.io/" target="_parent"><span
+  style='color:#0563C1;font-family:Calibri;mso-generic-font-family:auto;
+  mso-font-charset:0'>https://duplicati.readthedocs.io/</span></a></td>
+  <td class=xl66 align=left width=238 style='width:179pt'>Admin_Full_Map,
+  SysAdmin_Full_List, Tools_Roadmap</td>
+ </tr>
+ <tr height=40 style='height:30.0pt'>
+  <td height=40 align=right style='height:30.0pt'>6</td>
+  <td class=xl66 align=left width=210 style='width:158pt'>Резервное копирование</td>
+  <td class=xl66 align=left width=238 style='width:179pt'>Proxmox Backup Server</td>
+  <td class=xl66 align=left width=84 style='width:63pt'>Программа</td>
+  <td class=xl66 align=left width=182 style='width:137pt'>Linux</td>
+  <td class=xl66 align=left width=91 style='width:68pt'>&#128993; Средний</td>
+  <td class=xl66 align=left width=406 style='width:305pt'>Бэкапы виртуальных
+  машин Proxmox</td>
+  <td class=xl67 align=left width=364 style='width:273pt'><a
+  href="https://pbs.proxmox.com/docs/" target="_parent"><span style='color:
+  #0563C1;font-family:Calibri;mso-generic-font-family:auto;mso-font-charset:
+  0'>https://pbs.proxmox.com/docs/</span></a></td>
+  <td class=xl66 align=left width=238 style='width:179pt'>Admin_Full_Map,
+  SysAdmin_Full_List</td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 align=right style='height:15.0pt'>7</td>
+  <td class=xl66 align=left width=210 style='width:158pt'>Резервное копирование</td>
+  <td class=xl66 align=left width=238 style='width:179pt'>restic / Borg</td>
+  <td class=xl66 align=left width=84 style='width:63pt'>Программа</td>
+  <td class=xl66 align=left width=182 style='width:137pt'>Linux, Windows, macOS</td>
+  <td class=xl66 align=left width=91 style='width:68pt'>&#128993; Средний</td>
+  <td class=xl66 align=left width=406 style='width:305pt'>Быстрые шифрованные
+  инкрементальные бэкапы</td>
+  <td class=xl67 align=left width=364 style='width:273pt'><a
+  href="https://restic.readthedocs.io/" target="_parent"><span
+  style='color:#0563C1;font-family:Calibri;mso-generic-font-family:auto;
+  mso-font-charset:0'>https://restic.readthedocs.io/</span></a></td>
+  <td class=xl66 align=left width=238 style='width:179pt'>Tools_Roadmap</td>
+ </tr>
+ <tr height=40 style='height:30.0pt'>
+  <td height=40 align=right style='height:30.0pt'>8</td>
+  <td class=xl66 align=left width=210 style='width:158pt'>Резервное копирование</td>
+  <td class=xl66 align=left width=238 style='width:179pt'>Velero</td>
+  <td class=xl66 align=left width=84 style='width:63pt'>Программа</td>
+  <td class=xl66 align=left width=182 style='width:137pt'>Linux</td>
+  <td class=xl66 align=left width=91 style='width:68pt'>&#128993; Средний</td>
+  <td class=xl66 align=left width=406 style='width:305pt'>Резервное копирование
+  и восстановление ресурсов и данных Kubernetes.</td>
+  <td class=xl67 align=left width=364 style='width:273pt'><a
+  href="https://velero.io/docs/" target="_parent"><span style='color:#0563C1;
+  font-family:Calibri;mso-generic-font-family:auto;mso-font-charset:0'>https://velero.io/docs/</span></a></td>
+  <td class=xl66 align=left width=238 style='width:179pt'>добавлено</td>
+ </tr>
+ <tr height=40 style='height:30.0pt'>
+  <td height=40 align=right style='height:30.0pt'>9</td>
+  <td class=xl66 align=left width=210 style='width:158pt'>Резервное копирование</td>
+  <td class=xl66 align=left width=238 style='width:179pt'>Windows Server Backup</td>
+  <td class=xl66 align=left width=84 style='width:63pt'>Программа</td>
+  <td class=xl66 align=left width=182 style='width:137pt'>Windows</td>
+  <td class=xl66 align=left width=91 style='width:68pt'>&#128993; Средний</td>
+  <td class=xl66 align=left width=406 style='width:305pt'>Встроенный бэкап
+  Windows Server</td>
+  <td class=xl67 align=left width=364 style='width:273pt'><a
+  href="https://learn.microsoft.com/ru-ru/windows-server/administration/windows-commands/wbadmin"
+  target="_parent"><span style='color:#0563C1;font-family:Calibri;mso-generic-font-family:
+  auto;mso-font-charset:0'>https://learn.microsoft.com/ru-ru/windows-server/administration/windows-commands/wbadmin</span></a></td>
+  <td class=xl66 align=left width=238 style='width:179pt'>SysAdmin_Full_List</td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 align=right style='height:15.0pt'>10</td>
+  <td class=xl66 align=left width=210 style='width:158pt'>Резервное копирование</td>
+  <td class=xl66 align=left width=238 style='width:179pt'>Acronis True Image</td>
+  <td class=xl66 align=left width=84 style='width:63pt'>Программа</td>
+  <td class=xl66 align=left width=182 style='width:137pt'>Linux, Windows, macOS</td>
+  <td class=xl66 align=left width=91 style='width:68pt'>&#128994; Низкий</td>
+  <td class=xl66 align=left width=406 style='width:305pt'>Коммерческие бэкапы и
+  восстановление</td>
+  <td class=xl67 align=left width=364 style='width:273pt'><a
+  href="https://www.acronis.com/" target="_parent"><span style='color:#0563C1;
+  font-family:Calibri;mso-generic-font-family:auto;mso-font-charset:0'>https://www.acronis.com/</span></a></td>
+  <td class=xl66 align=left width=238 style='width:179pt'>Admin_Full_Map,
+  Tools_Roadmap</td>
+ </tr>
+ <tr height=40 style='height:30.0pt'>
+  <td height=40 align=right style='height:30.0pt'>11</td>
+  <td class=xl66 align=left width=210 style='width:158pt'>Резервное копирование</td>
+  <td class=xl66 align=left width=238 style='width:179pt'>Bacula / Bareos</td>
+  <td class=xl66 align=left width=84 style='width:63pt'>Программа</td>
+  <td class=xl66 align=left width=182 style='width:137pt'>Linux, Windows, macOS</td>
+  <td class=xl66 align=left width=91 style='width:68pt'>&#128994; Низкий</td>
+  <td class=xl66 align=left width=406 style='width:305pt'>Enterprise-система
+  резервного копирования</td>
+  <td class=xl67 align=left width=364 style='width:273pt'><a
+  href="https://www.bareos.org/" target="_parent"><span style='color:#0563C1;
+  font-family:Calibri;mso-generic-font-family:auto;mso-font-charset:0'>https://www.bareos.org/</span></a></td>
+  <td class=xl66 align=left width=238 style='width:179pt'>Admin_Full_Map,
+  SysAdmin_Full_List, Tools_Roadmap</td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 align=right style='height:15.0pt'>12</td>
+  <td class=xl66 align=left width=210 style='width:158pt'>Резервное копирование</td>
+  <td class=xl66 align=left width=238 style='width:179pt'>Deja Dup</td>
+  <td class=xl66 align=left width=84 style='width:63pt'>Программа</td>
+  <td class=xl66 align=left width=182 style='width:137pt'>Linux</td>
+  <td class=xl66 align=left width=91 style='width:68pt'>&#128994; Низкий</td>
+  <td class=xl66 align=left width=406 style='width:305pt'>Простой бэкап для
+  Ubuntu</td>
+  <td class=xl67 align=left width=364 style='width:273pt'><a
+  href="https://apps.gnome.org/DejaDup/" target="_parent"><span
+  style='color:#0563C1;font-family:Calibri;mso-generic-font-family:auto;
+  mso-font-charset:0'>https://apps.gnome.org/DejaDup/</span></a></td>
+  <td class=xl66 align=left width=238 style='width:179pt'>SysAdmin_Full_List</td>
+ </tr>
+ <tr height=40 style='height:30.0pt'>
+  <td height=40 align=right style='height:30.0pt'>13</td>
+  <td class=xl66 align=left width=210 style='width:158pt'>Резервное копирование</td>
+  <td class=xl66 align=left width=238 style='width:179pt'>rdiff-backup</td>
+  <td class=xl66 align=left width=84 style='width:63pt'>Программа</td>
+  <td class=xl66 align=left width=182 style='width:137pt'>Linux, macOS</td>
+  <td class=xl66 align=left width=91 style='width:68pt'>&#128994; Низкий</td>
+  <td class=xl66 align=left width=406 style='width:305pt'>Инкрементальные
+  бэкапы</td>
+  <td class=xl67 align=left width=364 style='width:273pt'><a
+  href="https://rdiff-backup.net/" target="_parent"><span style='color:#0563C1;
+  font-family:Calibri;mso-generic-font-family:auto;mso-font-charset:0'>https://rdiff-backup.net/</span></a></td>
+  <td class=xl66 align=left width=238 style='width:179pt'>Admin_Full_Map,
+  SysAdmin_Full_List</td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 align=right style='height:15.0pt'>14</td>
+  <td class=xl66 align=left width=210 style='width:158pt'>Резервное копирование</td>
+  <td class=xl66 align=left width=238 style='width:179pt'>Timeshift</td>
+  <td class=xl66 align=left width=84 style='width:63pt'>Программа</td>
+  <td class=xl66 align=left width=182 style='width:137pt'>Linux</td>
+  <td class=xl66 align=left width=91 style='width:68pt'>&#128994; Низкий</td>
+  <td class=xl66 align=left width=406 style='width:305pt'>Снимки системы Linux
+  (как restore points Windows)</td>
+  <td class=xl67 align=left width=364 style='width:273pt'><a
+  href="https://github.com/teejee2008/timeshift" target="_parent"><span
+  style='color:#0563C1;font-family:Calibri;mso-generic-font-family:auto;
+  mso-font-charset:0'>https://github.com/teejee2008/timeshift</span></a></td>
+  <td class=xl66 align=left width=238 style='width:179pt'>SysAdmin_Full_List,
+  Tools_Roadmap</td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 align=right style='height:15.0pt'>15</td>
+  <td class=xl66 align=left width=210 style='width:158pt'>Резервное копирование</td>
+  <td class=xl66 align=left width=238 style='width:179pt'>UrBackup</td>
+  <td class=xl66 align=left width=84 style='width:63pt'>Программа</td>
+  <td class=xl66 align=left width=182 style='width:137pt'>Linux, Windows, macOS</td>
+  <td class=xl66 align=left width=91 style='width:68pt'>&#128994; Низкий</td>
+  <td class=xl66 align=left width=406 style='width:305pt'>Бэкап рабочих станций</td>
+  <td class=xl67 align=left width=364 style='width:273pt'><a
+  href="https://www.urbackup.org/" target="_parent"><span style='color:#0563C1;
+  font-family:Calibri;mso-generic-font-family:auto;mso-font-charset:0'>https://www.urbackup.org/</span></a></td>
+  <td class=xl66 align=left width=238 style='width:179pt'>Admin_Full_Map</td>
+ </tr>
+ <tr height=40 style='height:30.0pt'>
+  <td height=40 align=right style='height:30.0pt'>16</td>
+  <td class=xl66 align=left width=210 style='width:158pt'>Хранилища и файловые
+  системы</td>
+  <td class=xl66 align=left width=238 style='width:179pt'>ext4</td>
+  <td class=xl66 align=left width=84 style='width:63pt'>Технология</td>
+  <td class=xl66 align=left width=182 style='width:137pt'>Linux</td>
+  <td class=xl66 align=left width=91 style='width:68pt'>&#128308; Высокий</td>
+  <td class=xl66 align=left width=406 style='width:305pt'>Стандартная ФС Linux</td>
+  <td class=xl67 align=left width=364 style='width:273pt'><a
+  href="https://ext4.wiki.kernel.org/" target="_parent"><span style='color:
+  #0563C1;font-family:Calibri;mso-generic-font-family:auto;mso-font-charset:
+  0'>https://ext4.wiki.kernel.org/</span></a></td>
+  <td class=xl66 align=left width=238 style='width:179pt'>SysAdmin_Full_List</td>
+ </tr>
+ <tr height=40 style='height:30.0pt'>
+  <td height=40 align=right style='height:30.0pt'>17</td>
+  <td class=xl66 align=left width=210 style='width:158pt'>Хранилища и файловые
+  системы</td>
+  <td class=xl66 align=left width=238 style='width:179pt'>ext4 / XFS</td>
+  <td class=xl66 align=left width=84 style='width:63pt'>Технология</td>
+  <td class=xl66 align=left width=182 style='width:137pt'>Linux, macOS</td>
+  <td class=xl66 align=left width=91 style='width:68pt'>&#128308; Высокий</td>
+  <td class=xl66 align=left width=406 style='width:305pt'>Основные ФС Linux</td>
+  <td class=xl67 align=left width=364 style='width:273pt'><a
+  href="https://ext4.wiki.kernel.org/" target="_parent"><span style='color:
+  #0563C1;font-family:Calibri;mso-generic-font-family:auto;mso-font-charset:
+  0'>https://ext4.wiki.kernel.org/</span></a></td>
+  <td class=xl66 align=left width=238 style='width:179pt'>Admin_Full_Map</td>
+ </tr>
+ <tr height=40 style='height:30.0pt'>
+  <td height=40 align=right style='height:30.0pt'>18</td>
+  <td class=xl66 align=left width=210 style='width:158pt'>Хранилища и файловые
+  системы</td>
+  <td class=xl66 align=left width=238 style='width:179pt'>LVM</td>
+  <td class=xl66 align=left width=84 style='width:63pt'>Технология</td>
+  <td class=xl66 align=left width=182 style='width:137pt'>Linux, macOS</td>
+  <td class=xl66 align=left width=91 style='width:68pt'>&#128308; Высокий</td>
+  <td class=xl66 align=left width=406 style='width:305pt'>Логические тома,
+  гибкое изменение размеров</td>
+  <td class=xl67 align=left width=364 style='width:273pt'><a
+  href="https://sourceware.org/lvm2/" target="_parent"><span style='color:#0563C1;
+  font-family:Calibri;mso-generic-font-family:auto;mso-font-charset:0'>https://sourceware.org/lvm2/</span></a></td>
+  <td class=xl66 align=left width=238 style='width:179pt'>Admin_Full_Map,
+  SysAdmin_Full_List, Tools_Roadmap</td>
+ </tr>
+ <tr height=40 style='height:30.0pt'>
+  <td height=40 align=right style='height:30.0pt'>19</td>
+  <td class=xl66 align=left width=210 style='width:158pt'>Хранилища и файловые
+  системы</td>
+  <td class=xl66 align=left width=238 style='width:179pt'>mdadm</td>
+  <td class=xl66 align=left width=84 style='width:63pt'>Программа</td>
+  <td class=xl66 align=left width=182 style='width:137pt'>Linux</td>
+  <td class=xl66 align=left width=91 style='width:68pt'>&#128308; Высокий</td>
+  <td class=xl66 align=left width=406 style='width:305pt'>Программный RAID в
+  Linux</td>
+  <td class=xl67 align=left width=364 style='width:273pt'><a
+  href="https://man7.org/linux/man-pages/man8/mdadm.8.html" target="_parent"><span
+  style='color:#0563C1;font-family:Calibri;mso-generic-font-family:auto;
+  mso-font-charset:0'>https://man7.org/linux/man-pages/man8/mdadm.8.html</span></a></td>
+  <td class=xl66 align=left width=238 style='width:179pt'>Admin_Full_Map,
+  SysAdmin_Full_List, Tools_Roadmap</td>
+ </tr>
+ <tr height=40 style='height:30.0pt'>
+  <td height=40 align=right style='height:30.0pt'>20</td>
+  <td class=xl66 align=left width=210 style='width:158pt'>Хранилища и файловые
+  системы</td>
+  <td class=xl66 align=left width=238 style='width:179pt'>NFS</td>
+  <td class=xl66 align=left width=84 style='width:63pt'>Технология</td>
+  <td class=xl66 align=left width=182 style='width:137pt'>Linux, Windows, macOS</td>
+  <td class=xl66 align=left width=91 style='width:68pt'>&#128308; Высокий</td>
+  <td class=xl66 align=left width=406 style='width:305pt'>Сетевая файловая
+  система для Unix-сред</td>
+  <td class=xl67 align=left width=364 style='width:273pt'><a
+  href="https://man7.org/linux/man-pages/man5/nfs.5.html" target="_parent"><span
+  style='color:#0563C1;font-family:Calibri;mso-generic-font-family:auto;
+  mso-font-charset:0'>https://man7.org/linux/man-pages/man5/nfs.5.html</span></a></td>
+  <td class=xl66 align=left width=238 style='width:179pt'>Admin_Full_Map,
+  SysAdmin_Full_List, Tools_Roadmap</td>
+ </tr>
+ <tr height=40 style='height:30.0pt'>
+  <td height=40 align=right style='height:30.0pt'>21</td>
+  <td class=xl66 align=left width=210 style='width:158pt'>Хранилища и файловые
+  системы</td>
+  <td class=xl66 align=left width=238 style='width:179pt'>NTFS / ReFS</td>
+  <td class=xl66 align=left width=84 style='width:63pt'>Технология</td>
+  <td class=xl66 align=left width=182 style='width:137pt'>Windows</td>
+  <td class=xl66 align=left width=91 style='width:68pt'>&#128308; Высокий</td>
+  <td class=xl66 align=left width=406 style='width:305pt'>ФС Windows</td>
+  <td class=xl67 align=left width=364 style='width:273pt'><a
+  href="https://ru.wikipedia.org/wiki/NTFS" target="_parent"><span
+  style='color:#0563C1;font-family:Calibri;mso-generic-font-family:auto;
+  mso-font-charset:0'>https://ru.wikipedia.org/wiki/NTFS</span></a></td>
+  <td class=xl66 align=left width=238 style='width:179pt'>Admin_Full_Map</td>
+ </tr>
+ <tr height=40 style='height:30.0pt'>
+  <td height=40 align=right style='height:30.0pt'>22</td>
+  <td class=xl66 align=left width=210 style='width:158pt'>Хранилища и файловые
+  системы</td>
+  <td class=xl66 align=left width=238 style='width:179pt'>Samba</td>
+  <td class=xl66 align=left width=84 style='width:63pt'>Программа</td>
+  <td class=xl66 align=left width=182 style='width:137pt'>Linux, Windows, macOS</td>
+  <td class=xl66 align=left width=91 style='width:68pt'>&#128308; Высокий</td>
+  <td class=xl66 align=left width=406 style='width:305pt'>Файловый сервер SMB
+  для Windows-сетей на Linux</td>
+  <td class=xl67 align=left width=364 style='width:273pt'><a
+  href="https://wiki.samba.org/index.php/Main_Page" target="_parent"><span
+  style='color:#0563C1;font-family:Calibri;mso-generic-font-family:auto;
+  mso-font-charset:0'>https://wiki.samba.org/index.php/Main_Page</span></a></td>
+  <td class=xl66 align=left width=238 style='width:179pt'>Admin_Full_Map,
+  SysAdmin_Full_List, Tools_Roadmap</td>
+ </tr>
+ <tr height=80 style='height:60.0pt'>
+  <td height=80 align=right style='height:60.0pt'>23</td>
+  <td class=xl66 align=left width=210 style='width:158pt'>Хранилища и файловые
+  системы</td>
+  <td class=xl66 align=left width=238 style='width:179pt'>TrueNAS / FreeNAS</td>
+  <td class=xl66 align=left width=84 style='width:63pt'>Программа</td>
+  <td class=xl66 align=left width=182 style='width:137pt'>FreeBSD, Linux</td>
+  <td class=xl66 align=left width=91 style='width:68pt'>&#128308; Высокий</td>
+  <td class=xl66 align=left width=406 style='width:305pt'>Специализированная
+  сетевая ОС для хранилищ (NAS/SAN) на базе файловой системы ZFS с поддержкой
+  RAID-Z, моментальных снимков и SMB/NFS/iSCSI.</td>
+  <td class=xl67 align=left width=364 style='width:273pt'><a
+  href="https://www.truenas.com/docs/" target="_parent"><span style='color:
+  #0563C1;font-family:Calibri;mso-generic-font-family:auto;mso-font-charset:
+  0'>https://www.truenas.com/docs/</span></a></td>
+  <td class=xl66 align=left width=238 style='width:179pt'>Admin_Full_Map,
+  SysAdmin_Full_List, Technologies_Programs, Tools_Roadmap</td>
+ </tr>
+ <tr height=40 style='height:30.0pt'>
+  <td height=40 align=right style='height:30.0pt'>24</td>
+  <td class=xl66 align=left width=210 style='width:158pt'>Хранилища и файловые
+  системы</td>
+  <td class=xl66 align=left width=238 style='width:179pt'>Btrfs</td>
+  <td class=xl66 align=left width=84 style='width:63pt'>Технология</td>
+  <td class=xl66 align=left width=182 style='width:137pt'>Linux, macOS</td>
+  <td class=xl66 align=left width=91 style='width:68pt'>&#128993; Средний</td>
+  <td class=xl66 align=left width=406 style='width:305pt'>Копирование при
+  записи, снапшоты</td>
+  <td class=xl67 align=left width=364 style='width:273pt'><a
+  href="https://btrfs.readthedocs.io/" target="_parent"><span style='color:
+  #0563C1;font-family:Calibri;mso-generic-font-family:auto;mso-font-charset:
+  0'>https://btrfs.readthedocs.io/</span></a></td>
+  <td class=xl66 align=left width=238 style='width:179pt'>Admin_Full_Map,
+  SysAdmin_Full_List</td>
+ </tr>
+ <tr height=40 style='height:30.0pt'>
+  <td height=40 align=right style='height:30.0pt'>25</td>
+  <td class=xl66 align=left width=210 style='width:158pt'>Хранилища и файловые
+  системы</td>
+  <td class=xl66 align=left width=238 style='width:179pt'>iSCSI</td>
+  <td class=xl66 align=left width=84 style='width:63pt'>Технология</td>
+  <td class=xl66 align=left width=182 style='width:137pt'>Linux, Windows, macOS</td>
+  <td class=xl66 align=left width=91 style='width:68pt'>&#128993; Средний</td>
+  <td class=xl66 align=left width=406 style='width:305pt'>Сетевые блочные
+  устройства SAN</td>
+  <td class=xl67 align=left width=364 style='width:273pt'><a
+  href="https://ru.wikipedia.org/wiki/ISCSI" target="_parent"><span
+  style='color:#0563C1;font-family:Calibri;mso-generic-font-family:auto;
+  mso-font-charset:0'>https://ru.wikipedia.org/wiki/ISCSI</span></a></td>
+  <td class=xl66 align=left width=238 style='width:179pt'>Admin_Full_Map,
+  SysAdmin_Full_List, Tools_Roadmap</td>
+ </tr>
+ <tr height=40 style='height:30.0pt'>
+  <td height=40 align=right style='height:30.0pt'>26</td>
+  <td class=xl66 align=left width=210 style='width:158pt'>Хранилища и файловые
+  системы</td>
+  <td class=xl66 align=left width=238 style='width:179pt'>MinIO</td>
+  <td class=xl66 align=left width=84 style='width:63pt'>Программа</td>
+  <td class=xl66 align=left width=182 style='width:137pt'>Linux, Windows, macOS</td>
+  <td class=xl66 align=left width=91 style='width:68pt'>&#128993; Средний</td>
+  <td class=xl66 align=left width=406 style='width:305pt'>Собственное
+  S3-совместимое объектное хранилище</td>
+  <td class=xl67 align=left width=364 style='width:273pt'><a
+  href="https://min.io/docs/minio/linux/index.html" target="_parent"><span
+  style='color:#0563C1;font-family:Calibri;mso-generic-font-family:auto;
+  mso-font-charset:0'>https://min.io/docs/minio/linux/index.html</span></a></td>
+  <td class=xl66 align=left width=238 style='width:179pt'>Admin_Full_Map,
+  SysAdmin_Full_List, Tools_Roadmap</td>
+ </tr>
+ <tr height=40 style='height:30.0pt'>
+  <td height=40 align=right style='height:30.0pt'>27</td>
+  <td class=xl66 align=left width=210 style='width:158pt'>Хранилища и файловые
+  системы</td>
+  <td class=xl66 align=left width=238 style='width:179pt'>Nextcloud / ownCloud</td>
+  <td class=xl66 align=left width=84 style='width:63pt'>Программа</td>
+  <td class=xl66 align=left width=182 style='width:137pt'>Linux, Windows, macOS</td>
+  <td class=xl66 align=left width=91 style='width:68pt'>&#128993; Средний</td>
+  <td class=xl66 align=left width=406 style='width:305pt'>Личное облако: файлы,
+  календари, совместная работа</td>
+  <td class=xl67 align=left width=364 style='width:273pt'><a
+  href="https://docs.nextcloud.com/server/latest/admin_manual/contents.html"
+  target="_parent"><span style='color:#0563C1;font-family:Calibri;mso-generic-font-family:
+  auto;mso-font-charset:0'>https://docs.nextcloud.com/server/latest/admin_manual/contents.html</span></a></td>
+  <td class=xl66 align=left width=238 style='width:179pt'>Admin_Full_Map,
+  SysAdmin_Full_List, Tools_Roadmap</td>
+ </tr>
+ <tr height=40 style='height:30.0pt'>
+  <td height=40 align=right style='height:30.0pt'>28</td>
+  <td class=xl66 align=left width=210 style='width:158pt'>Хранилища и файловые
+  системы</td>
+  <td class=xl66 align=left width=238 style='width:179pt'>rclone</td>
+  <td class=xl66 align=left width=84 style='width:63pt'>Программа</td>
+  <td class=xl66 align=left width=182 style='width:137pt'>Linux, Windows, macOS</td>
+  <td class=xl66 align=left width=91 style='width:68pt'>&#128993; Средний</td>
+  <td class=xl66 align=left width=406 style='width:305pt'>Синхронизация файлов
+  с десятками облачных хранилищ</td>
+  <td class=xl67 align=left width=364 style='width:273pt'><a
+  href="https://rclone.org/docs/" target="_parent"><span style='color:#0563C1;
+  font-family:Calibri;mso-generic-font-family:auto;mso-font-charset:0'>https://rclone.org/docs/</span></a></td>
+  <td class=xl66 align=left width=238 style='width:179pt'>SysAdmin_Full_List,
+  Tools_Roadmap</td>
+ </tr>
+ <tr height=40 style='height:30.0pt'>
+  <td height=40 align=right style='height:30.0pt'>29</td>
+  <td class=xl66 align=left width=210 style='width:158pt'>Хранилища и файловые
+  системы</td>
+  <td class=xl66 align=left width=238 style='width:179pt'>robocopy</td>
+  <td class=xl66 align=left width=84 style='width:63pt'>Программа</td>
+  <td class=xl66 align=left width=182 style='width:137pt'>Windows</td>
+  <td class=xl66 align=left width=91 style='width:68pt'>&#128993; Средний</td>
+  <td class=xl66 align=left width=406 style='width:305pt'>Копирование и
+  синхронизация папок в Windows</td>
+  <td class=xl67 align=left width=364 style='width:273pt'><a
+  href="https://learn.microsoft.com/ru-ru/windows-server/administration/windows-commands/robocopy"
+  target="_parent"><span style='color:#0563C1;font-family:Calibri;mso-generic-font-family:
+  auto;mso-font-charset:0'>https://learn.microsoft.com/ru-ru/windows-server/administration/windows-commands/robocopy</span></a></td>
+  <td class=xl66 align=left width=238 style='width:179pt'>Tools_Roadmap</td>
+ </tr>
+ <tr height=40 style='height:30.0pt'>
+  <td height=40 align=right style='height:30.0pt'>30</td>
+  <td class=xl66 align=left width=210 style='width:158pt'>Хранилища и файловые
+  системы</td>
+  <td class=xl66 align=left width=238 style='width:179pt'>XFS</td>
+  <td class=xl66 align=left width=84 style='width:63pt'>Технология</td>
+  <td class=xl66 align=left width=182 style='width:137pt'>Linux</td>
+  <td class=xl66 align=left width=91 style='width:68pt'>&#128993; Средний</td>
+  <td class=xl66 align=left width=406 style='width:305pt'>Высокопроизводительная
+  ФС</td>
+  <td class=xl67 align=left width=364 style='width:273pt'><a
+  href="https://xfs.org/index.php?title=XFS_FAQ" target="_parent"><span
+  style='color:#0563C1;font-family:Calibri;mso-generic-font-family:auto;
+  mso-font-charset:0'>https://xfs.org/index.php?title=XFS_FAQ</span></a></td>
+  <td class=xl66 align=left width=238 style='width:179pt'>SysAdmin_Full_List</td>
+ </tr>
+ <tr height=40 style='height:30.0pt'>
+  <td height=40 align=right style='height:30.0pt'>31</td>
+  <td class=xl66 align=left width=210 style='width:158pt'>Хранилища и файловые
+  системы</td>
+  <td class=xl66 align=left width=238 style='width:179pt'>ZFS</td>
+  <td class=xl66 align=left width=84 style='width:63pt'>Технология</td>
+  <td class=xl66 align=left width=182 style='width:137pt'>Linux, macOS</td>
+  <td class=xl66 align=left width=91 style='width:68pt'>&#128993; Средний</td>
+  <td class=xl66 align=left width=406 style='width:305pt'>Файловая система с
+  RAID, снимками и самовосстановлением</td>
+  <td class=xl67 align=left width=364 style='width:273pt'><a
+  href="https://openzfs.github.io/openzfs-docs/" target="_parent"><span
+  style='color:#0563C1;font-family:Calibri;mso-generic-font-family:auto;
+  mso-font-charset:0'>https://openzfs.github.io/openzfs-docs/</span></a></td>
+  <td class=xl66 align=left width=238 style='width:179pt'>Admin_Full_Map,
+  SysAdmin_Full_List, Tools_Roadmap</td>
+ </tr>
+ <tr height=40 style='height:30.0pt'>
+  <td height=40 align=right style='height:30.0pt'>32</td>
+  <td class=xl66 align=left width=210 style='width:158pt'>Хранилища и файловые
+  системы</td>
+  <td class=xl66 align=left width=238 style='width:179pt'>Ceph</td>
+  <td class=xl66 align=left width=84 style='width:63pt'>Технология</td>
+  <td class=xl66 align=left width=182 style='width:137pt'>Linux, macOS</td>
+  <td class=xl66 align=left width=91 style='width:68pt'>&#128994; Низкий</td>
+  <td class=xl66 align=left width=406 style='width:305pt'>Распределённое
+  хранилище для кластеров</td>
+  <td class=xl67 align=left width=364 style='width:273pt'><a
+  href="https://docs.ceph.com/" target="_parent"><span style='color:#0563C1;
+  font-family:Calibri;mso-generic-font-family:auto;mso-font-charset:0'>https://docs.ceph.com/</span></a></td>
+  <td class=xl66 align=left width=238 style='width:179pt'>Admin_Full_Map,
+  SysAdmin_Full_List, Tools_Roadmap</td>
+ </tr>
+ <tr height=40 style='height:30.0pt'>
+  <td height=40 align=right style='height:30.0pt'>33</td>
+  <td class=xl66 align=left width=210 style='width:158pt'>Хранилища и файловые
+  системы</td>
+  <td class=xl66 align=left width=238 style='width:179pt'>FreeFileSync</td>
+  <td class=xl66 align=left width=84 style='width:63pt'>Программа</td>
+  <td class=xl66 align=left width=182 style='width:137pt'>Linux, Windows, macOS</td>
+  <td class=xl66 align=left width=91 style='width:68pt'>&#128994; Низкий</td>
+  <td class=xl66 align=left width=406 style='width:305pt'>Синхронизация и бэкап
+  папок с графическим интерфейсом</td>
+  <td class=xl67 align=left width=364 style='width:273pt'><a
+  href="https://freefilesync.org/manual.php" target="_parent"><span
+  style='color:#0563C1;font-family:Calibri;mso-generic-font-family:auto;
+  mso-font-charset:0'>https://freefilesync.org/manual.php</span></a></td>
+  <td class=xl66 align=left width=238 style='width:179pt'>Tools_Roadmap</td>
+ </tr>
+ <tr height=40 style='height:30.0pt'>
+  <td height=40 align=right style='height:30.0pt'>34</td>
+  <td class=xl66 align=left width=210 style='width:158pt'>Хранилища и файловые
+  системы</td>
+  <td class=xl66 align=left width=238 style='width:179pt'>GlusterFS</td>
+  <td class=xl66 align=left width=84 style='width:63pt'>Технология</td>
+  <td class=xl66 align=left width=182 style='width:137pt'>Linux, macOS</td>
+  <td class=xl66 align=left width=91 style='width:68pt'>&#128994; Низкий</td>
+  <td class=xl66 align=left width=406 style='width:305pt'>Распределённая
+  сетевая ФС</td>
+  <td class=xl67 align=left width=364 style='width:273pt'><a
+  href="https://docs.gluster.org/" target="_parent"><span style='color:#0563C1;
+  font-family:Calibri;mso-generic-font-family:auto;mso-font-charset:0'>https://docs.gluster.org/</span></a></td>
+  <td class=xl66 align=left width=238 style='width:179pt'>Admin_Full_Map,
+  SysAdmin_Full_List</td>
+ </tr>
+ <tr height=40 style='height:30.0pt'>
+  <td height=40 align=right style='height:30.0pt'>35</td>
+  <td class=xl66 align=left width=210 style='width:158pt'>Хранилища и файловые
+  системы</td>
+  <td class=xl66 align=left width=238 style='width:179pt'>OpenMediaVault</td>
+  <td class=xl66 align=left width=84 style='width:63pt'>Программа</td>
+  <td class=xl66 align=left width=182 style='width:137pt'>Linux</td>
+  <td class=xl66 align=left width=91 style='width:68pt'>&#128994; Низкий</td>
+  <td class=xl66 align=left width=406 style='width:305pt'>NAS на базе Debian</td>
+  <td class=xl67 align=left width=364 style='width:273pt'><a
+  href="https://docs.openmediavault.org/" target="_parent"><span
+  style='color:#0563C1;font-family:Calibri;mso-generic-font-family:auto;
+  mso-font-charset:0'>https://docs.openmediavault.org/</span></a></td>
+  <td class=xl66 align=left width=238 style='width:179pt'>SysAdmin_Full_List</td>
+ </tr>
+ <tr height=40 style='height:30.0pt'>
+  <td height=40 align=right style='height:30.0pt'>36</td>
+  <td class=xl66 align=left width=210 style='width:158pt'>Хранилища и файловые
+  системы</td>
+  <td class=xl66 align=left width=238 style='width:179pt'>Syncthing</td>
+  <td class=xl66 align=left width=84 style='width:63pt'>Программа</td>
+  <td class=xl66 align=left width=182 style='width:137pt'>Linux, Windows, macOS</td>
+  <td class=xl66 align=left width=91 style='width:68pt'>&#128994; Низкий</td>
+  <td class=xl66 align=left width=406 style='width:305pt'>Децентрализованная
+  синхронизация папок между устройствами</td>
+  <td class=xl67 align=left width=364 style='width:273pt'><a
+  href="https://docs.syncthing.net/" target="_parent"><span style='color:#0563C1;
+  font-family:Calibri;mso-generic-font-family:auto;mso-font-charset:0'>https://docs.syncthing.net/</span></a></td>
+  <td class=xl66 align=left width=238 style='width:179pt'>Tools_Roadmap</td>
+ </tr>
+ <tr height=40 style='height:30.0pt'>
+  <td height=40 align=right style='height:30.0pt'>37</td>
+  <td class=xl66 align=left width=210 style='width:158pt'>Хранилища и файловые
+  системы</td>
+  <td class=xl66 align=left width=238 style='width:179pt'>vsftpd / proftpd</td>
+  <td class=xl66 align=left width=84 style='width:63pt'>Программа</td>
+  <td class=xl66 align=left width=182 style='width:137pt'>Linux, macOS</td>
+  <td class=xl66 align=left width=91 style='width:68pt'>&#128994; Низкий</td>
+  <td class=xl66 align=left width=406 style='width:305pt'>FTP-серверы</td>
+  <td class=xl67 align=left width=364 style='width:273pt'><a
+  href="https://security.appspot.com/vsftpd.html" target="_parent"><span
+  style='color:#0563C1;font-family:Calibri;mso-generic-font-family:auto;
+  mso-font-charset:0'>https://security.appspot.com/vsftpd.html</span></a></td>
+  <td class=xl66 align=left width=238 style='width:179pt'>Admin_Full_Map</td>
+ </tr>
+ <tr height=40 style='height:30.0pt'>
+  <td height=40 align=right style='height:30.0pt'>38</td>
+  <td class=xl66 align=left width=210 style='width:158pt'>Развёртывание и
+  клонирование</td>
+  <td class=xl66 align=left width=238 style='width:179pt'>Rufus / Ventoy /
+  Etcher</td>
+  <td class=xl66 align=left width=84 style='width:63pt'>Программа</td>
+  <td class=xl66 align=left width=182 style='width:137pt'>Linux, Windows, macOS</td>
+  <td class=xl66 align=left width=91 style='width:68pt'>&#128308; Высокий</td>
+  <td class=xl66 align=left width=406 style='width:305pt'>Создание загрузочных
+  флешек</td>
+  <td class=xl67 align=left width=364 style='width:273pt'><a
+  href="https://rufus.ie/ru/" target="_parent"><span style='color:#0563C1;
+  font-family:Calibri;mso-generic-font-family:auto;mso-font-charset:0'>https://rufus.ie/ru/</span></a></td>
+  <td class=xl66 align=left width=238 style='width:179pt'>Tools_Roadmap</td>
+ </tr>
+ <tr height=40 style='height:30.0pt'>
+  <td height=40 align=right style='height:30.0pt'>39</td>
+  <td class=xl66 align=left width=210 style='width:158pt'>Развёртывание и
+  клонирование</td>
+  <td class=xl66 align=left width=238 style='width:179pt'>Clonezilla</td>
+  <td class=xl66 align=left width=84 style='width:63pt'>Программа</td>
+  <td class=xl66 align=left width=182 style='width:137pt'>Linux, Windows, macOS</td>
+  <td class=xl66 align=left width=91 style='width:68pt'>&#128993; Средний</td>
+  <td class=xl66 align=left width=406 style='width:305pt'>Клонирование и
+  развёртывание дисков по сети</td>
+  <td class=xl67 align=left width=364 style='width:273pt'><a
+  href="https://clonezilla.org/" target="_parent"><span style='color:#0563C1;
+  font-family:Calibri;mso-generic-font-family:auto;mso-font-charset:0'>https://clonezilla.org/</span></a></td>
+  <td class=xl66 align=left width=238 style='width:179pt'>Tools_Roadmap</td>
+ </tr>
+ <tr height=40 style='height:30.0pt'>
+  <td height=40 align=right style='height:30.0pt'>40</td>
+  <td class=xl66 align=left width=210 style='width:158pt'>Развёртывание и
+  клонирование</td>
+  <td class=xl66 align=left width=238 style='width:179pt'>FOG Project</td>
+  <td class=xl66 align=left width=84 style='width:63pt'>Программа</td>
+  <td class=xl66 align=left width=182 style='width:137pt'>Linux</td>
+  <td class=xl66 align=left width=91 style='width:68pt'>&#128994; Низкий</td>
+  <td class=xl66 align=left width=406 style='width:305pt'>Свободное
+  клонирование ПК по сети (PXE)</td>
+  <td class=xl67 align=left width=364 style='width:273pt'><a
+  href="https://fogproject.org/" target="_parent"><span style='color:#0563C1;
+  font-family:Calibri;mso-generic-font-family:auto;mso-font-charset:0'>https://fogproject.org/</span></a></td>
+  <td class=xl66 align=left width=238 style='width:179pt'>Tools_Roadmap</td>
+ </tr>
+ <tr height=40 style='height:30.0pt'>
+  <td height=40 align=right style='height:30.0pt'>41</td>
+  <td class=xl66 align=left width=210 style='width:158pt'>Развёртывание и
+  клонирование</td>
+  <td class=xl66 align=left width=238 style='width:179pt'>Macrium Reflect</td>
+  <td class=xl66 align=left width=84 style='width:63pt'>Программа</td>
+  <td class=xl66 align=left width=182 style='width:137pt'>Windows</td>
+  <td class=xl66 align=left width=91 style='width:68pt'>&#128994; Низкий</td>
+  <td class=xl66 align=left width=406 style='width:305pt'>Образы дисков и
+  клонирование в Windows</td>
+  <td class=xl67 align=left width=364 style='width:273pt'><a
+  href="https://knowledgebase.macrium.com/" target="_parent"><span
+  style='color:#0563C1;font-family:Calibri;mso-generic-font-family:auto;
+  mso-font-charset:0'>https://knowledgebase.macrium.com/</span></a></td>
+  <td class=xl66 align=left width=238 style='width:179pt'>Tools_Roadmap</td>
+ </tr>
+ <tr height=40 style='height:30.0pt'>
+  <td height=40 align=right style='height:30.0pt'>42</td>
+  <td class=xl66 align=left width=210 style='width:158pt'>Развёртывание и
+  клонирование</td>
+  <td class=xl66 align=left width=238 style='width:179pt'>Windows Deployment
+  Services</td>
+  <td class=xl66 align=left width=84 style='width:63pt'>Технология</td>
+  <td class=xl66 align=left width=182 style='width:137pt'>Windows</td>
+  <td class=xl66 align=left width=91 style='width:68pt'>&#128994; Низкий</td>
+  <td class=xl66 align=left width=406 style='width:305pt'>Сетевая установка
+  Windows по PXE</td>
+  <td class=xl67 align=left width=364 style='width:273pt'><a
+  href="https://learn.microsoft.com/ru-ru/windows/deployment/windows-deployment"
+  target="_parent"><span style='color:#0563C1;font-family:Calibri;mso-generic-font-family:
+  auto;mso-font-charset:0'>https://learn.microsoft.com/ru-ru/windows/deployment/windows-deployment</span></a></td>
+  <td class=xl66 align=left width=238 style='width:179pt'>Admin_Full_Map,
+  Tools_Roadmap</td>
+ </tr>
+ <![if supportMisalignedColumns]>
+ <tr height=0 style='display:none'>
+  <td width=35 style='width:26pt'></td>
+  <td width=210 style='width:158pt'></td>
+  <td width=238 style='width:179pt'></td>
+  <td width=84 style='width:63pt'></td>
+  <td width=182 style='width:137pt'></td>
+  <td width=91 style='width:68pt'></td>
+  <td width=406 style='width:305pt'></td>
+  <td width=364 style='width:273pt'></td>
+  <td width=238 style='width:179pt'></td>
+ </tr>
+ <![endif]>
+</table>
+
+</body>
+
+</html>

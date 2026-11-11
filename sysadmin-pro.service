@@ -1,0 +1,18 @@
+[Unit]
+Description=SysAdmin Pro Career Lab Web Application
+After=network.target docker.service
+Requires=docker.service
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/sysadmin-pro
+ExecStart=/usr/bin/docker compose up
+ExecStop=/usr/bin/docker compose down
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=sysadmin-pro
+
+[Install]
+WantedBy=multi-user.target
