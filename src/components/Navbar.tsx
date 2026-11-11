@@ -10,6 +10,8 @@ import {
   CheckCircle2,
   Server,
   FileSpreadsheet,
+  Sparkles,
+  Swords,
 } from 'lucide-react';
 
 export type ActiveTab =
@@ -21,7 +23,8 @@ export type ActiveTab =
   | 'portfolio'
   | 'interview'
   | 'toolkit'
-  | 'vps';
+  | 'vps'
+  | 'mmorpg';
 
 interface NavbarProps {
   activeTab: ActiveTab;
@@ -29,6 +32,7 @@ interface NavbarProps {
   completedStepIds: number[];
   completedMissionIds: string[];
   testedItemCount?: number;
+  onSwitchToMmorpg?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -37,6 +41,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   completedStepIds,
   completedMissionIds,
   testedItemCount = 0,
+  onSwitchToMmorpg,
 }) => {
   const totalSteps = 10;
   const progressPercent = Math.round((completedStepIds.length / totalSteps) * 100);
@@ -74,6 +79,13 @@ export const Navbar: React.FC<NavbarProps> = ({
       badge: 'ZIP + Docker',
       badgeColor: 'bg-cyan-500/25 text-cyan-300 border-cyan-500/40 font-bold',
     },
+    {
+      id: 'mmorpg' as ActiveTab,
+      label: 'MMORPG Хроники',
+      icon: Sparkles,
+      badge: 'L2 • WoW • PoE',
+      badgeColor: 'bg-amber-500/25 text-amber-300 border-amber-500/40 font-bold',
+    },
   ];
 
   return (
@@ -105,11 +117,27 @@ export const Navbar: React.FC<NavbarProps> = ({
             </div>
           </div>
 
-          {/* Quick VPS & Progress Indicator */}
-          <div className="flex items-center gap-3">
+          {/* Quick VPS, MMORPG & Progress Indicator */}
+          <div className="flex items-center gap-2 sm:gap-3">
+            <button
+              onClick={() => {
+                if (onSwitchToMmorpg) {
+                  onSwitchToMmorpg();
+                } else {
+                  setActiveTab('mmorpg');
+                }
+              }}
+              className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg bg-gradient-to-r from-amber-600/20 via-amber-500/20 to-amber-600/20 hover:from-amber-600/30 hover:to-amber-500/30 text-amber-300 border border-amber-500/40 text-xs font-bold transition-all shadow-sm shadow-amber-500/10 cursor-pointer"
+              title="Перейти в MMORPG Портал (RedlineMMORPGPortal)"
+            >
+              <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+              <span className="hidden sm:inline">MMORPG Портал</span>
+              <span className="sm:hidden">MMORPG</span>
+            </button>
+
             <button
               onClick={() => setActiveTab('vps')}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-300 border border-cyan-500/40 text-xs font-bold transition-all shadow-sm shadow-cyan-500/10 cursor-pointer"
+              className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-300 border border-cyan-500/40 text-xs font-bold transition-all shadow-sm shadow-cyan-500/10 cursor-pointer"
             >
               <Server className="w-3.5 h-3.5 text-cyan-400" />
               <span className="hidden sm:inline">Скачать для VPS / Офлайн</span>

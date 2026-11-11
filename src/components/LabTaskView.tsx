@@ -107,6 +107,20 @@ export const LabTaskView: React.FC<LabTaskViewProps> = ({
         </div>
       </div>
 
+      {/* Monorepo Integration Callout */}
+      <div className="bg-slate-900/70 border border-emerald-500/20 px-4 py-3 rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+        <div className="flex items-center gap-2.5">
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span className="text-slate-300">
+            <strong className="text-white">Часть Единого Мега-Проекта:</strong> Навыки и конфиги шага #{currentStep.id} автоматически объединены в{' '}
+            <code className="text-emerald-400 font-mono">sysadmin-enterprise-monorepo</code>.
+          </span>
+        </div>
+        <span className="text-slate-400 text-[11px] font-mono shrink-0">
+          Связанные файлы: docker-compose.yml, ansible/site.yml
+        </span>
+      </div>
+
       {/* Tabs */}
       <div className="flex items-center gap-2 border-b border-slate-800">
         <button

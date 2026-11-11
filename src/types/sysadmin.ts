@@ -16,7 +16,16 @@ export interface QuizQuestion {
 
 export interface InterviewQnA {
   id: string;
-  category: 'Сети' | 'Linux' | 'Windows/AD' | 'Виртуализация' | 'Безопасность' | 'Траблшутинг' | 'Архитектура';
+  category:
+    | 'Сети'
+    | 'Linux'
+    | 'Windows/AD'
+    | 'Виртуализация'
+    | 'Безопасность'
+    | 'Траблшутинг'
+    | 'Архитектура'
+    | 'Web/Nginx'
+    | 'Мониторинг';
   question: string;
   shortAnswer: string;
   detailedAnswer: string;

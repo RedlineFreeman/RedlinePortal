@@ -10,8 +10,9 @@ import { SysadminToolkit } from './components/SysadminToolkit';
 import { TechCatalogView } from './components/TechCatalogView';
 import { VpsDeploymentView } from './components/VpsDeploymentView';
 import { QuizModal } from './components/QuizModal';
+import MMORPGApp from './mmorpg/MMORPGApp';
 import { RoadmapStep } from './types/sysadmin';
-import { Server, Terminal, Github, Heart, RefreshCw, Award } from 'lucide-react';
+import { Server, Terminal, Github, Heart, RefreshCw, Award, Sparkles } from 'lucide-react';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<ActiveTab>('roadmap');
@@ -110,6 +111,14 @@ export default function App() {
     }
   };
 
+  if (activeTab === 'mmorpg') {
+    return (
+      <div className="min-h-screen bg-[#0c0e14] text-[#e2e8f0]">
+        <MMORPGApp onSwitchToSysadmin={() => setActiveTab('roadmap')} />
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-[#0b0f19] text-slate-100 flex flex-col selection:bg-emerald-500 selection:text-slate-950">
       {/* Top Navigation */}
@@ -119,6 +128,7 @@ export default function App() {
         completedStepIds={completedStepIds}
         completedMissionIds={completedMissionIds}
         testedItemCount={testedItemIds.length}
+        onSwitchToMmorpg={() => setActiveTab('mmorpg')}
       />
 
       {/* Main Container */}

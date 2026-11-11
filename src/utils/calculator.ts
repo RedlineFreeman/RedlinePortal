@@ -233,16 +233,26 @@ export function generatePortfolioMasterReadme(
 
 ## 📂 Практические проекты портфолио
 
+### 🏢 [ГЛАВНЫЙ ПРОЕКТ] Enterprise Infrastructure Monorepo (All-in-One)
+- **Репозиторий:** \`sysadmin-enterprise-monorepo\`
+- **Стек технологий:** Linux, Nginx, Docker Compose, PostgreSQL 16, Redis, Ansible, Prometheus, Grafana, Node Exporter, Uptime Kuma, BorgBackup, UFW, Fail2ban
+- **Описание:** Единая корпоративная инфраструктура высокой доступности: реверс-прокси с SSL/TLS, изоляция сетей БД, сквозной мониторинг и алертинг, автоматизированное развертывание через Ansible и зашифрованные бэкапы BorgBackup с retention 7D/4W/12M.
+- **Архитектура:** Единый \`docker-compose.yml\` на 8 сервисов + мастер-плейбук Ansible \`site.yml\`.
+
 ${labsList}
 
 ---
 
 ## 🚀 Как развернуть лабораторную среду
-Большинство проектов оформлены в виде декларативных Ansible плейбуков или Docker Compose файлов:
+Вы можете развернуть как единый мега-проект (рекомендуется), так и отдельные стенды:
 \`\`\`bash
-git clone ${githubUrl || 'https://github.com/sysadmin-pro/infrastructure-labs.git'}
-cd infrastructure-labs
-# Следуйте инструкциям в README соответствующей директории
+# Клонирование единого корпоративного монорепозитория
+git clone ${githubUrl || 'https://github.com/sysadmin-pro/sysadmin-enterprise-monorepo.git'}
+cd sysadmin-enterprise-monorepo
+cp .env.example .env
+./scripts/deploy.sh
+# Проверка здоровья всех 8 сервисов:
+./scripts/healthcheck.sh
 \`\`\`
 
 ---
@@ -289,7 +299,14 @@ ${skillsList || 'Linux (Ubuntu/Debian/RHEL), TCP/IP, DNS, DHCP, VLAN, Nginx, Doc
 ---
 
 ## 📁 Выполненные инфраструктурные проекты (Портфолио)
-${projectsSection || 'Развернуты комплексные стенды виртуализации, веб-серверов, мониторинга и резервного копирования (см. репозитории на GitHub).'}
+### 🏢 Enterprise Infrastructure Monorepo (All-in-One Production Stack)
+**Стек:** Linux (Ubuntu/Debian), Nginx, PostgreSQL 16, Redis, Docker Compose, Ansible, Prometheus, Grafana, Node Exporter, Uptime Kuma, BorgBackup, UFW/Fail2ban
+- Спроектирован и развернут комплексный стек корпоративной инфраструктуры: Nginx с SSL/TLS, HTTP/2, rate-limiting, изолированная внутренняя сеть для PostgreSQL и Redis.
+- Полная автоматизация развертывания через единый \`docker-compose.yml\` (8 взаимосвязанных сервисов с healthcheck) и роли Ansible (\`site.yml\`).
+- Развернута система сквозного мониторинга на базе Prometheus + Grafana + Node Exporter + Uptime Kuma с преднастроенными алертами по CPU, RAM и диску.
+- Настроена отказоустойчивая система резервного копирования BorgBackup с шифрованием AES-256, дедупликацией и ротацией G-F-S (7 daily, 4 weekly, 12 monthly).
+
+${projectsSection || 'Развернуты комплексные стенды виртуализации, веб-серверов, мониторинга и резервного копирования.'}
 
 ---
 
