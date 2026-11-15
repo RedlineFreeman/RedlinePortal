@@ -12,11 +12,14 @@ import {
   FileSpreadsheet,
   Sparkles,
   Swords,
+  BookOpen,
 } from 'lucide-react';
+import { INITIAL_KNOWLEDGE_ENTRIES } from '../data/initialKnowledgeBase';
 
 export type ActiveTab =
   | 'roadmap'
   | 'catalog'
+  | 'knowledge'
   | 'labs'
   | 'terminal'
   | 'troubleshooting'
@@ -53,6 +56,13 @@ export const Navbar: React.FC<NavbarProps> = ({
       label: 'База Софта & Excel (417)',
       icon: FileSpreadsheet,
       badge: '417 позиций',
+      badgeColor: 'bg-emerald-500/25 text-emerald-300 border-emerald-500/40 font-bold',
+    },
+    {
+      id: 'knowledge' as ActiveTab,
+      label: 'База Знаний (Wiki)',
+      icon: BookOpen,
+      badge: `${INITIAL_KNOWLEDGE_ENTRIES.length} тем`,
       badgeColor: 'bg-emerald-500/25 text-emerald-300 border-emerald-500/40 font-bold',
     },
     {

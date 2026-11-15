@@ -54,3 +54,27 @@ test('generateOfflineHandbookHtml generates valid standalone HTML without extern
   assert.ok(html.includes('df -hT'));
   assert.ok(html.includes('smartctl'));
 });
+
+test('Apache .htaccess contains SPA rewrite rules and security headers', async () => {
+  const { APACHE_HTACCESS_CONTENT } = await import('./vpsPackageExporter');
+  assert.ok(APACHE_HTACCESS_CONTENT.includes('RewriteEngine On'));
+  assert.ok(APACHE_HTACCESS_CONTENT.includes('RewriteRule . /index.html [L]'));
+  assert.ok(APACHE_HTACCESS_CONTENT.includes('Header always set X-Frame-Options "SAMEORIGIN"'));
+});
+
+test('MySQL schema contains FULLTEXT search index and SCTP initial data', async () => {
+  const { MYSQL_SCHEMA_SQL } = await import('./vpsPackageExporter');
+  assert.ok(MYSQL_SCHEMA_SQL.includes('CREATE DATABASE IF NOT EXISTS `sysadmin_db`'));
+  assert.ok(MYSQL_SCHEMA_SQL.includes('FULLTEXT KEY `idx_fulltext_search`'));
+  assert.ok(MYSQL_SCHEMA_SQL.includes('sctp-protocol'));
+  assert.ok(MYSQL_SCHEMA_SQL.includes('SCTP (Stream Control Transmission Protocol)'));
+});
+
+test('PHP API script provides PDO prepared statements and JSON response', async () => {
+  const { PHP_API_SCRIPT } = await import('./vpsPackageExporter');
+  assert.ok(PHP_API_SCRIPT.includes('<?php'));
+  assert.ok(PHP_API_SCRIPT.includes('PDO::ATTR_ERRMODE'));
+  assert.ok(PHP_API_SCRIPT.includes('MATCH(title, description, practical_usage, tags) AGAINST'));
+  assert.ok(PHP_API_SCRIPT.includes('INSERT INTO knowledge_entries'));
+});
+

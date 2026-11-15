@@ -471,3 +471,255 @@ sudo ./deploy.sh</pre>
 </body>
 </html>`;
 }
+
+export const APACHE_HTACCESS_CONTENT = `# ==============================================================================
+# Apache .htaccess configuration for SysAdmin Pro (LAMP / XAMPP / OpenServer)
+# Enables SPA Routing, Security Headers, Gzip Compression, and API proxying
+# ==============================================================================
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # 1. Pass API requests directly to PHP script if present
+  RewriteRule ^api/(.*)$ api.php?$1 [QSA,L]
+
+  # 2. Prevent rewrite loop for existing physical files or directories
+  RewriteRule ^index\\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+
+  # 3. Fallback all SPA routes to index.html
+  RewriteRule . /index.html [L]
+</IfModule>
+
+# Security Headers (CIS Benchmark recommendations for Apache)
+<IfModule mod_headers.c>
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-XSS-Protection "1; mode=block"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# Gzip Deflate Compression
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json image/svg+xml
+</IfModule>
+
+# Browser Caching for static assets
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 month"
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType text/css "access plus 6 months"
+  ExpiresByType application/javascript "access plus 6 months"
+  ExpiresByType image/svg+xml "access plus 6 months"
+</IfModule>
+`;
+
+export const APACHE_VHOST_CONF = `# VirtualHost configuration for Apache 2.4 (Ubuntu: /etc/apache2/sites-available/sysadmin-pro.conf)
+<VirtualHost *:80>
+    ServerAdmin webmaster@localhost
+    ServerName sysadmin-lab.local
+    DocumentRoot /var/www/html
+
+    <Directory /var/www/html>
+        Options -Indexes +FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+    ErrorLog \${APACHE_LOG_DIR}/sysadmin_pro_error.log
+    CustomLog \${APACHE_LOG_DIR}/sysadmin_pro_access.log combined
+</VirtualHost>
+`;
+
+export const MYSQL_SCHEMA_SQL = `-- ==============================================================================
+-- SysAdmin Pro: Схема базы данных для MySQL / MariaDB (LAMP / XAMPP)
+-- Поддерживает Full-Text Search (FTS) для мгновенного поиска по миллионам статей
+-- ==============================================================================
+
+CREATE DATABASE IF NOT EXISTS \`sysadmin_db\` 
+  CHARACTER SET utf8mb4 
+  COLLATE utf8mb4_unicode_ci;
+
+USE \`sysadmin_db\`;
+
+-- 1. Таблица обучающих материалов и терминов (База Знаний)
+CREATE TABLE IF NOT EXISTS \`knowledge_entries\` (
+  \`id\` VARCHAR(64) NOT NULL PRIMARY KEY,
+  \`section\` VARCHAR(100) NOT NULL,
+  \`category\` VARCHAR(100) NOT NULL,
+  \`title\` VARCHAR(255) NOT NULL,
+  \`short_summary\` VARCHAR(500) NULL,
+  \`description\` MEDIUMTEXT NOT NULL,
+  \`practical_usage\` TEXT NULL,
+  \`commands_or_config\` TEXT NULL,
+  \`level\` ENUM('Junior', 'Middle', 'Senior') DEFAULT 'Middle',
+  \`tags\` VARCHAR(500) NULL,
+  \`is_custom\` TINYINT(1) DEFAULT 0,
+  \`created_at\` DATE NOT NULL,
+  \`updated_at\` DATE NOT NULL,
+  FULLTEXT KEY \`idx_fulltext_search\` (\`title\`, \`description\`, \`practical_usage\`, \`tags\`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- 2. Вставка начального материала: SCTP (Stream Control Transmission Protocol)
+INSERT INTO \`knowledge_entries\` 
+(\`id\`, \`section\`, \`category\`, \`title\`, \`short_summary\`, \`description\`, \`practical_usage\`, \`commands_or_config\`, \`level\`, \`tags\`, \`is_custom\`, \`created_at\`, \`updated_at\`)
+VALUES
+(
+  'sctp-protocol',
+  'Сети',
+  'Протоколы',
+  'SCTP (Stream Control Transmission Protocol)',
+  'Протокол передачи управления потоком транспортного уровня с поддержкой Multi-Homing и многопоточности.',
+  'Протокол передачи управления потоком. Еще один протокол, который относится к транспортному уровню. SCTP обеспечивает надежную последовательную передачу данных. Поддерживает многоадресное соединение, когда один или оба конечных узла могут состоять из более чем одного IP-адреса. Это обеспечивает прозрачное переключение между резервными сетевыми путями.\\n\\nSCTP аналогичен протоколам UDP и TCP, которые обеспечивают функции транспортного уровня для некоторых интернет-приложений. Так как преимущество протокола SCTP — в быстром переключении между интерфейсами, на него переходят только компании, для которых критична недоступность приложений. SCTP работает поверх бесконтактной пакетной сети, такой как IP, и поддерживает передачу данных в случаях с одним или несколькими IP.',
+  'Широко применяется в телекоммуникационных сетях (SS7 over IP / SIGTRAN), WebRTC (для Data Channels между браузерами), банковских шлюзах и высоконадежных распределенных кластерах, где сбой одного сетевого интерфейса не должен приводить к обрыву сессии.',
+  '# Проверка поддержки SCTP в ядре Linux\\nlsmod | grep sctp || sudo modprobe sctp\\n\\n# Установка диагностических утилит lksctp-tools\\nsudo apt-get install -y lksctp-tools\\n\\n# Просмотр активных SCTP сокетов в системе\\nss --sctp -a -n -p\\ncat /proc/net/sctp/eps',
+  'Middle',
+  'SCTP,Транспортный уровень,Multi-Homing,SIGTRAN,WebRTC,Отказоустойчивость',
+  0,
+  CURDATE(),
+  CURDATE()
+)
+ON DUPLICATE KEY UPDATE \`updated_at\` = CURDATE();
+`;
+
+export const PHP_API_SCRIPT = `<?php
+/**
+ * SysAdmin Pro: Легковесный API-скрипт для стека LAMP (PHP + MySQL PDO)
+ * Поддерживает полнотекстовый поиск, сохранение и отдачу JSON для офлайна и онлайна.
+ */
+
+header('Content-Type: application/json; charset=utf-8');
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET, POST, DELETE, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type, Authorization');
+
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(200);
+    exit(0);
+}
+
+// 1. Конфигурация подключения к MySQL
+$dbHost = getenv('DB_HOST') ?: '127.0.0.1';
+$dbPort = getenv('DB_PORT') ?: '3306';
+$dbName = getenv('DB_NAME') ?: 'sysadmin_db';
+$dbUser = getenv('DB_USER') ?: 'root';
+$dbPass = getenv('DB_PASS') !== false ? getenv('DB_PASS') : '';
+
+try {
+    $dsn = "mysql:host={$dbHost};port={$dbPort};dbname={$dbName};charset=utf8mb4";
+    $pdo = new PDO($dsn, $dbUser, $dbPass, [
+        PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        PDO::ATTR_EMULATE_PREPARES   => false,
+    ]);
+} catch (PDOException $e) {
+    http_response_code(500);
+    echo json_encode([
+        'success' => false,
+        'error'   => 'Не удалось подключиться к базе данных MySQL: ' . $e->getMessage(),
+        'hint'    => 'Убедитесь, что служба mysql/mariadb запущена и база sysadmin_db создана скриптом schema-mysql.sql'
+    ], JSON_UNESCAPED_UNICODE);
+    exit;
+}
+
+$action = $_GET['action'] ?? 'list';
+
+// 2. Получение списка материалов / полнотекстовый поиск
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && $action === 'list') {
+    $search = trim($_GET['q'] ?? '');
+    $section = trim($_GET['section'] ?? '');
+
+    $sql = "SELECT id, section, category, title, short_summary AS shortSummary, description, 
+                   practical_usage AS practicalUsage, commands_or_config AS commandsOrConfig, 
+                   level, tags, is_custom AS isCustom, created_at AS createdAt, updated_at AS updatedAt 
+            FROM knowledge_entries WHERE 1=1";
+    $params = [];
+
+    if (!empty($section) && $section !== 'all') {
+        $sql .= " AND section = :section";
+        $params[':section'] = $section;
+    }
+
+    if (!empty($search)) {
+        // Full-Text Search в режиме BOOLEAN
+        $sql .= " AND (MATCH(title, description, practical_usage, tags) AGAINST(:fts IN BOOLEAN MODE) OR title LIKE :likeQ)";
+        $params[':fts'] = $search . '*';
+        $params[':likeQ'] = '%' . $search . '%';
+    }
+
+    $sql .= " ORDER BY section ASC, category ASC, title ASC";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute($params);
+    $rows = $stmt->fetchAll();
+
+    // Преобразуем tags из строки в массив
+    foreach ($rows as &$r) {
+        $r['tags'] = !empty($r['tags']) ? array_map('trim', explode(',', $r['tags'])) : [];
+        $r['isCustom'] = (bool)$r['isCustom'];
+    }
+
+    echo json_encode(['success' => true, 'total' => count($rows), 'data' => $rows], JSON_UNESCAPED_UNICODE);
+    exit;
+}
+
+// 3. Сохранение нового или обновление существующего материала
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && $action === 'save') {
+    $input = file_get_contents('php://input');
+    $data = json_decode($input, true);
+
+    if (!$data || empty($data['title']) || empty($data['description'])) {
+        http_response_code(400);
+        echo json_encode(['success' => false, 'error' => 'Заполните обязательные поля: title и description'], JSON_UNESCAPED_UNICODE);
+        exit;
+    }
+
+    $id = !empty($data['id']) ? $data['id'] : ('kb-' . time() . '-' . rand(100, 999));
+    $tagsStr = is_array($data['tags'] ?? null) ? implode(',', $data['tags']) : ($data['tags'] ?? '');
+    $today = date('Y-m-d');
+
+    $sql = "INSERT INTO knowledge_entries 
+            (id, section, category, title, short_summary, description, practical_usage, commands_or_config, level, tags, is_custom, created_at, updated_at)
+            VALUES 
+            (:id, :section, :category, :title, :short_summary, :description, :practical_usage, :commands_or_config, :level, :tags, :is_custom, :created_at, :updated_at)
+            ON DUPLICATE KEY UPDATE 
+                section = VALUES(section),
+                category = VALUES(category),
+                title = VALUES(title),
+                short_summary = VALUES(short_summary),
+                description = VALUES(description),
+                practical_usage = VALUES(practical_usage),
+                commands_or_config = VALUES(commands_or_config),
+                level = VALUES(level),
+                tags = VALUES(tags),
+                updated_at = VALUES(updated_at)";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([
+        ':id'                 => $id,
+        ':section'            => $data['section'] ?? 'Сети',
+        ':category'           => $data['category'] ?? 'Протоколы',
+        ':title'              => $data['title'],
+        ':short_summary'      => $data['shortSummary'] ?? '',
+        ':description'        => $data['description'],
+        ':practical_usage'    => $data['practicalUsage'] ?? '',
+        ':commands_or_config' => $data['commandsOrConfig'] ?? '',
+        ':level'              => $data['level'] ?? 'Middle',
+        ':tags'               => $tagsStr,
+        ':is_custom'          => !empty($data['isCustom']) ? 1 : 0,
+        ':created_at'         => $data['createdAt'] ?? $today,
+        ':updated_at'         => $today,
+    ]);
+
+    echo json_encode(['success' => true, 'id' => $id, 'message' => 'Материал успешно сохранен в MySQL!'], JSON_UNESCAPED_UNICODE);
+    exit;
+}
+
+// 4. Неизвестное действие
+http_response_code(404);
+echo json_encode(['success' => false, 'error' => 'Действие не поддерживается'], JSON_UNESCAPED_UNICODE);
+`;
+

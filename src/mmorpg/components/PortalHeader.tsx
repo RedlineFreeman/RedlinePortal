@@ -48,27 +48,27 @@ export const PortalHeader: React.FC<PortalHeaderProps> = ({
       {/* Seasonal Snow Mounds / Autumn Foliage on Top Header Bar */}
       <SeasonalAccumulation season={season} variant="nav" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between gap-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2">
         {/* Zone 1: Single Brand Wordmark in Cinzel Display Font */}
-        <div className="flex items-center gap-3 shrink-0">
-          <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-amber-600 via-amber-700 to-amber-900 flex items-center justify-center text-amber-200 border border-amber-500/40 shadow-sm shadow-amber-900/30">
-            <Sparkles className="w-5 h-5 text-amber-300" />
+        <div className="flex items-center gap-2.5 shrink-0">
+          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-600 via-amber-700 to-amber-900 flex items-center justify-center text-amber-200 border border-amber-500/40 shadow-sm shadow-amber-900/30">
+            <Sparkles className="w-4 h-4 text-amber-300" />
           </div>
           <button
             onClick={() => handleNavClick('catalog', 'all')}
             className="text-left cursor-pointer group"
           >
-            <span className="font-cinzel text-xl font-bold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-300 to-amber-500 whitespace-nowrap block">
+            <span className="font-cinzel text-lg xl:text-xl font-bold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-300 to-amber-500 whitespace-nowrap block">
               Arcane Chronicles
             </span>
           </button>
         </div>
 
         {/* Zone 2: Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
+        <nav className="hidden lg:flex items-center gap-1 min-w-0">
           <button
             onClick={() => handleNavClick('catalog', 'all')}
-            className={`px-3 py-1.5 text-xs font-semibold uppercase tracking-wider rounded-md transition-colors whitespace-nowrap shrink-0 ${
+            className={`px-2.5 py-1.5 text-[11px] font-semibold uppercase tracking-wider rounded-md transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
               viewMode === 'catalog' && selectedGame === 'all'
                 ? 'text-amber-300 bg-amber-950/50 border border-amber-500/30'
                 : 'text-neutral-400 hover:text-neutral-200'
@@ -78,7 +78,7 @@ export const PortalHeader: React.FC<PortalHeaderProps> = ({
           </button>
           <button
             onClick={() => handleNavClick('catalog', 'Lineage 2')}
-            className={`px-3 py-1.5 text-xs font-semibold uppercase tracking-wider rounded-md transition-colors whitespace-nowrap shrink-0 ${
+            className={`px-2.5 py-1.5 text-[11px] font-semibold uppercase tracking-wider rounded-md transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
               viewMode === 'catalog' && selectedGame === 'Lineage 2'
                 ? 'text-amber-300 bg-amber-950/50 border border-amber-500/30'
                 : 'text-neutral-400 hover:text-neutral-200'
@@ -88,7 +88,7 @@ export const PortalHeader: React.FC<PortalHeaderProps> = ({
           </button>
           <button
             onClick={() => handleNavClick('catalog', 'World of Warcraft')}
-            className={`px-3 py-1.5 text-xs font-semibold uppercase tracking-wider rounded-md transition-colors whitespace-nowrap shrink-0 ${
+            className={`px-2.5 py-1.5 text-[11px] font-semibold uppercase tracking-wider rounded-md transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
               viewMode === 'catalog' && selectedGame === 'World of Warcraft'
                 ? 'text-amber-300 bg-amber-950/50 border border-amber-500/30'
                 : 'text-neutral-400 hover:text-neutral-200'
@@ -98,7 +98,7 @@ export const PortalHeader: React.FC<PortalHeaderProps> = ({
           </button>
           <button
             onClick={() => handleNavClick('catalog', 'Path of Exile 2')}
-            className={`px-3 py-1.5 text-xs font-semibold uppercase tracking-wider rounded-md transition-colors whitespace-nowrap shrink-0 ${
+            className={`px-2.5 py-1.5 text-[11px] font-semibold uppercase tracking-wider rounded-md transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
               viewMode === 'catalog' && selectedGame === 'Path of Exile 2'
                 ? 'text-amber-300 bg-amber-950/50 border border-amber-500/30'
                 : 'text-neutral-400 hover:text-neutral-200'
@@ -108,7 +108,7 @@ export const PortalHeader: React.FC<PortalHeaderProps> = ({
           </button>
           <button
             onClick={() => handleNavClick('bookmarks')}
-            className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold uppercase tracking-wider rounded-md transition-colors whitespace-nowrap shrink-0 ${
+            className={`flex items-center gap-1 px-2.5 py-1.5 text-[11px] font-semibold uppercase tracking-wider rounded-md transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
               viewMode === 'bookmarks'
                 ? 'text-amber-300 bg-amber-950/50 border border-amber-500/30'
                 : 'text-neutral-400 hover:text-neutral-200'
@@ -127,42 +127,46 @@ export const PortalHeader: React.FC<PortalHeaderProps> = ({
           {isAdmin && (
             <button
               onClick={() => handleNavClick('admin')}
-              className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold uppercase tracking-wider rounded-md transition-colors whitespace-nowrap shrink-0 ${
+              className={`flex items-center gap-1 px-2.5 py-1.5 text-[11px] font-semibold uppercase tracking-wider rounded-md transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
                 viewMode === 'admin'
                   ? 'text-amber-300 bg-amber-500/20 border border-amber-500/60 shadow-sm shadow-amber-950/50'
                   : 'text-amber-400/90 hover:text-amber-300 bg-amber-950/30 border border-amber-500/30'
               }`}
             >
               <Shield className="w-3.5 h-3.5 text-amber-400" />
-              <span>Админка сервера</span>
+              <span>Админка</span>
             </button>
           )}
         </nav>
 
         {/* Zone 3: Actions & User Profile */}
-        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+        <div className="flex items-center gap-2 shrink-0">
           {/* Switch to SysAdmin Lab CTA */}
           {onSwitchToSysadmin && (
             <button
               onClick={onSwitchToSysadmin}
               title="Перейти в IT & Сисадмин Лабораторию (RedlinePortal)"
-              className="flex items-center gap-1.5 px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-lg bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-300 border border-emerald-500/40 text-xs font-bold transition-all shadow-sm cursor-pointer"
+              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-300 border border-emerald-500/40 text-xs font-bold transition-all shadow-sm cursor-pointer whitespace-nowrap"
             >
               <Server className="w-3.5 h-3.5 text-emerald-400" />
-              <span className="hidden sm:inline">IT & Сисадмин</span>
-              <span className="sm:hidden">IT Lab</span>
+              <span>IT & Сисадмин</span>
             </button>
           )}
 
           {/* Cozy Fire Ambient Toggle */}
           <button
             onClick={onToggleAmbient}
+            aria-label={
+              isAmbientActive
+                ? 'Погасить огонь в таверне'
+                : 'Зажечь огонь в таверне (уютный треск костра)'
+            }
             title={
               isAmbientActive
                 ? 'Погасить огонь в таверне'
                 : 'Зажечь огонь в таверне (уютный треск костра)'
             }
-            className={`flex items-center gap-1.5 px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-lg border text-xs font-semibold transition-all cursor-pointer ${
+            className={`flex items-center gap-1.5 p-2 rounded-lg border text-xs font-semibold transition-all cursor-pointer ${
               isAmbientActive
                 ? 'border-amber-400 bg-amber-950/80 text-amber-300 shadow-md shadow-amber-900/40 animate-pulse'
                 : 'border-neutral-800 bg-neutral-900/80 text-neutral-400 hover:text-neutral-200'
@@ -173,15 +177,12 @@ export const PortalHeader: React.FC<PortalHeaderProps> = ({
                 isAmbientActive ? 'text-amber-400 fill-amber-400 animate-bounce' : 'text-neutral-500'
               }`}
             />
-            <span className="hidden sm:inline text-[11px]">
-              {isAmbientActive ? 'Костёр горит' : 'Звук костра'}
-            </span>
           </button>
 
           {/* Write Article CTA */}
           <button
             onClick={() => handleNavClick('editor')}
-            className={`hidden sm:flex items-center gap-2 px-3.5 py-2 text-xs font-semibold uppercase tracking-wider rounded-lg transition-all shadow-sm ${
+            className={`hidden sm:flex items-center gap-1.5 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wider rounded-lg transition-all shadow-sm cursor-pointer whitespace-nowrap ${
               viewMode === 'editor'
                 ? 'bg-amber-500 text-neutral-950 border border-amber-400'
                 : 'bg-gradient-to-r from-amber-600 via-amber-500 to-amber-600 text-neutral-950 font-bold hover:brightness-110 border border-amber-400/60'
@@ -193,13 +194,15 @@ export const PortalHeader: React.FC<PortalHeaderProps> = ({
 
           {/* User Profile or Login CTA */}
           {currentUser ? (
-            <div className="flex items-center gap-2 pl-2 border-l border-amber-900/30">
-              <div
-                className="flex items-center gap-2 cursor-pointer"
+            <div className="flex items-center gap-1.5 pl-2 border-l border-amber-900/30">
+              <button
+                type="button"
+                className="flex items-center gap-1.5 cursor-pointer"
                 onClick={() => {
                   if (isAdmin) handleNavClick('admin');
                 }}
-                title={isAdmin ? 'Нажмите, чтобы открыть Админку' : currentUser.username}
+                title={isAdmin ? `${currentUser.username} — открыть Админку` : currentUser.username}
+                aria-label={isAdmin ? `${currentUser.username} — открыть Админку` : currentUser.username}
               >
                 <img
                   src={currentUser.avatar}
@@ -209,15 +212,16 @@ export const PortalHeader: React.FC<PortalHeaderProps> = ({
                     isAdmin ? 'ring-amber-400 ring-2' : 'ring-neutral-700'
                   }`}
                 />
-                <span className="hidden xl:inline text-xs font-medium text-neutral-200 truncate max-w-[120px]">
+                <span className="hidden 2xl:inline text-xs font-medium text-neutral-200 truncate max-w-[100px]">
                   {currentUser.username}
                 </span>
-              </div>
+              </button>
 
               <button
                 onClick={onLogout}
                 title="Выйти из аккаунта"
-                className="p-1.5 text-neutral-400 hover:text-rose-400 transition-colors"
+                aria-label="Выйти из аккаунта"
+                className="p-1.5 text-neutral-400 hover:text-rose-400 transition-colors cursor-pointer"
               >
                 <LogOut className="w-4 h-4" />
               </button>
@@ -225,7 +229,7 @@ export const PortalHeader: React.FC<PortalHeaderProps> = ({
           ) : (
             <button
               onClick={onOpenAuthModal}
-              className="px-3 py-1.5 rounded-lg border border-amber-500/40 text-amber-300 hover:bg-amber-950/40 text-xs font-semibold uppercase tracking-wider transition-colors"
+              className="px-3 py-1.5 rounded-lg border border-amber-500/40 text-amber-300 hover:bg-amber-950/40 text-xs font-semibold uppercase tracking-wider transition-colors cursor-pointer"
             >
               Войти
             </button>

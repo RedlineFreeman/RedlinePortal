@@ -8,6 +8,7 @@ import { PortfolioResumeHub } from './components/PortfolioResumeHub';
 import { InterviewTrainer } from './components/InterviewTrainer';
 import { SysadminToolkit } from './components/SysadminToolkit';
 import { TechCatalogView } from './components/TechCatalogView';
+import { KnowledgeBaseView } from './components/KnowledgeBaseView';
 import { VpsDeploymentView } from './components/VpsDeploymentView';
 import { QuizModal } from './components/QuizModal';
 import MMORPGApp from './mmorpg/MMORPGApp';
@@ -148,6 +149,8 @@ export default function App() {
             onToggleTested={toggleTestedItem}
           />
         )}
+
+        {activeTab === 'knowledge' && <KnowledgeBaseView />}
 
         {activeTab === 'labs' && (
           <LabTaskView

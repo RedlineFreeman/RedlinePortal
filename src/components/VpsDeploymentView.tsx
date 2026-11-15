@@ -22,6 +22,7 @@ import {
   BookOpen,
   ArrowRight,
   Archive,
+  Database,
 } from 'lucide-react';
 import {
   DOCKERFILE_CONTENT,
@@ -31,12 +32,16 @@ import {
   DEPLOY_SH_CONTENT,
   VPS_DEPLOY_README_CONTENT,
   generateOfflineHandbookHtml,
+  APACHE_HTACCESS_CONTENT,
+  APACHE_VHOST_CONF,
+  MYSQL_SCHEMA_SQL,
+  PHP_API_SCRIPT,
 } from '../utils/vpsPackageExporter';
 import { exportTechCatalogToExcel, exportTechCatalogToCsv } from '../utils/excelExporter';
 import { TECH_CATALOG } from '../data/techCatalogData';
 
 export const VpsDeploymentView: React.FC = () => {
-  const [activeSubTab, setActiveSubTab] = useState<'docker' | 'nginx' | 'local' | 'security'>('docker');
+  const [activeSubTab, setActiveSubTab] = useState<'docker' | 'nginx' | 'lamp' | 'local' | 'security'>('docker');
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
   const [isZipping, setIsZipping] = useState(false);
 
@@ -72,6 +77,10 @@ export const VpsDeploymentView: React.FC = () => {
       zip.file('README-VPS.md', VPS_DEPLOY_README_CONTENT);
       zip.file('OFFLINE_SYSLAB.html', generateOfflineHandbookHtml());
       zip.file('ALL_TECHS_AND_TOOLS.csv', exportTechCatalogToCsv(TECH_CATALOG));
+      zip.file('.htaccess', APACHE_HTACCESS_CONTENT);
+      zip.file('apache-sysadmin.conf', APACHE_VHOST_CONF);
+      zip.file('schema-mysql.sql', MYSQL_SCHEMA_SQL);
+      zip.file('api.php', PHP_API_SCRIPT);
 
       const blob = await zip.generateAsync({ type: 'blob' });
       const url = URL.createObjectURL(blob);
@@ -201,7 +210,7 @@ export const VpsDeploymentView: React.FC = () => {
           <div>
             <h3 className="font-bold text-white text-base">База софта (Excel / CSV)</h3>
             <p className="text-xs text-slate-400 mt-1">
-              78 инструментов и технологий для Windows, Linux, macOS и FreeBSD с матрицей соответствия.
+              {TECH_CATALOG.length} инструментов и технологий для Windows, Linux, macOS и FreeBSD с матрицей соответствия.
             </p>
           </div>
           <div className="pt-2 border-t border-slate-800/80 flex items-center gap-3 justify-end">
@@ -233,50 +242,62 @@ export const VpsDeploymentView: React.FC = () => {
         <div className="flex border-b border-slate-800 bg-slate-950/60 overflow-x-auto scrollbar-none">
           <button
             onClick={() => setActiveSubTab('docker')}
-            className={`flex items-center gap-2 px-5 py-4 text-xs sm:text-sm font-semibold whitespace-nowrap transition-colors cursor-pointer border-b-2 ${
+            className={`flex items-center gap-1.5 px-3.5 py-3.5 text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer border-b-2 ${
               activeSubTab === 'docker'
                 ? 'border-cyan-400 text-cyan-300 bg-cyan-500/10'
                 : 'border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-900'
             }`}
           >
-            <Layers className="w-4 h-4" />
-            <span>1. Docker Compose на VPS (Рекомендуется)</span>
+            <Layers className="w-4 h-4 shrink-0" />
+            <span>1. Docker Compose на VPS</span>
           </button>
 
           <button
             onClick={() => setActiveSubTab('nginx')}
-            className={`flex items-center gap-2 px-5 py-4 text-xs sm:text-sm font-semibold whitespace-nowrap transition-colors cursor-pointer border-b-2 ${
+            className={`flex items-center gap-1.5 px-3.5 py-3.5 text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer border-b-2 ${
               activeSubTab === 'nginx'
                 ? 'border-emerald-400 text-emerald-300 bg-emerald-500/10'
                 : 'border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-900'
             }`}
           >
-            <Server className="w-4 h-4" />
-            <span>2. Чистый Nginx (Без Docker, 64 MB RAM)</span>
+            <Server className="w-4 h-4 shrink-0" />
+            <span>2. Чистый Nginx (64 MB RAM)</span>
+          </button>
+
+          <button
+            onClick={() => setActiveSubTab('lamp')}
+            className={`flex items-center gap-1.5 px-3.5 py-3.5 text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer border-b-2 ${
+              activeSubTab === 'lamp'
+                ? 'border-blue-400 text-blue-300 bg-blue-500/10'
+                : 'border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-900'
+            }`}
+          >
+            <Database className="w-4 h-4 shrink-0" />
+            <span>3. Стек LAMP (Apache + MySQL + PHP)</span>
           </button>
 
           <button
             onClick={() => setActiveSubTab('local')}
-            className={`flex items-center gap-2 px-5 py-4 text-xs sm:text-sm font-semibold whitespace-nowrap transition-colors cursor-pointer border-b-2 ${
+            className={`flex items-center gap-1.5 px-3.5 py-3.5 text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer border-b-2 ${
               activeSubTab === 'local'
                 ? 'border-amber-400 text-amber-300 bg-amber-500/10'
                 : 'border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-900'
             }`}
           >
-            <Terminal className="w-4 h-4" />
-            <span>3. Локально на своем ПК (Dev / Source)</span>
+            <Terminal className="w-4 h-4 shrink-0" />
+            <span>4. Локально на ПК (Dev / HTML)</span>
           </button>
 
           <button
             onClick={() => setActiveSubTab('security')}
-            className={`flex items-center gap-2 px-5 py-4 text-xs sm:text-sm font-semibold whitespace-nowrap transition-colors cursor-pointer border-b-2 ${
+            className={`flex items-center gap-1.5 px-3.5 py-3.5 text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer border-b-2 ${
               activeSubTab === 'security'
                 ? 'border-purple-400 text-purple-300 bg-purple-500/10'
                 : 'border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-900'
             }`}
           >
-            <ShieldCheck className="w-4 h-4" />
-            <span>4. Безопасность VPS & SSL Certbot</span>
+            <ShieldCheck className="w-4 h-4 shrink-0" />
+            <span>5. Безопасность & SSL Certbot</span>
           </button>
         </div>
 
@@ -510,7 +531,187 @@ sudo nginx -t && sudo systemctl reload nginx`}
             </div>
           )}
 
-          {/* TAB 3: LOCAL PC */}
+          {/* TAB 3: LAMP (APACHE + MYSQL + PHP) */}
+          {activeSubTab === 'lamp' && (
+            <div className="space-y-6">
+              <div className="bg-blue-950/30 border border-blue-500/30 rounded-xl p-4 text-xs text-blue-200 leading-relaxed">
+                🌐 <strong>Полная поддержка онлайн (VPS) и 100% офлайн (ПК/LAMP/XAMPP):</strong><br />
+                Вы можете развернуть этот портал как на виртуальном хостинге / VPS с Apache, так и полностью локально без интернета на домашнем ПК через <strong>LAMP (Linux)</strong> или <strong>XAMPP / OpenServer (Windows)</strong>.
+                Для хранения базы знаний используется <strong>MySQL / MariaDB</strong> с поддержкой полнотекстового поиска (Full-Text Search), позволяющего моментально искать по сотням мегабайт обучающих материалов.
+              </div>
+
+              {/* Instructions grid */}
+              <div className="space-y-4">
+                <h4 className="text-sm font-bold text-white flex items-center gap-2">
+                  <Database className="w-4 h-4 text-blue-400" />
+                  <span>Пошаговое развертывание на стеке LAMP (Ubuntu / Debian / XAMPP):</span>
+                </h4>
+
+                <div className="space-y-3 text-xs">
+                  {/* Step 1 */}
+                  <div className="bg-slate-950 p-3.5 rounded-lg border border-slate-800 relative group">
+                    <p className="text-slate-400 mb-1.5 font-semibold">1. Установка стека LAMP на сервере (или запуск XAMPP на Windows):</p>
+                    <pre className="font-mono text-blue-400 whitespace-pre overflow-x-auto">
+{`sudo apt update
+sudo apt install -y apache2 mariadb-server php libapache2-mod-php php-mysql php-mbstring
+sudo a2enmod rewrite headers expires deflate
+sudo systemctl restart apache2 mariadb`}
+                    </pre>
+                    <button
+                      onClick={() =>
+                        copyToClipboard(
+                          'lamp-step1',
+                          'sudo apt update\nsudo apt install -y apache2 mariadb-server php libapache2-mod-php php-mysql php-mbstring\nsudo a2enmod rewrite headers expires deflate\nsudo systemctl restart apache2 mariadb'
+                        )
+                      }
+                      className="absolute top-2.5 right-2.5 px-2 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs flex items-center gap-1 transition-colors cursor-pointer"
+                    >
+                      {copiedKey === 'lamp-step1' ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+                    </button>
+                  </div>
+
+                  {/* Step 2 */}
+                  <div className="bg-slate-950 p-3.5 rounded-lg border border-slate-800 relative group">
+                    <p className="text-slate-400 mb-1.5 font-semibold">2. Создание базы данных MySQL и таблицы знаний:</p>
+                    <pre className="font-mono text-blue-400 whitespace-pre overflow-x-auto">
+{`sudo mysql < schema-mysql.sql`}
+                    </pre>
+                    <button
+                      onClick={() => copyToClipboard('lamp-step2', 'sudo mysql < schema-mysql.sql')}
+                      className="absolute top-2.5 right-2.5 px-2 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs flex items-center gap-1 transition-colors cursor-pointer"
+                    >
+                      {copiedKey === 'lamp-step2' ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+                    </button>
+                  </div>
+
+                  {/* Step 3 */}
+                  <div className="bg-slate-950 p-3.5 rounded-lg border border-slate-800 relative group">
+                    <p className="text-slate-400 mb-1.5 font-semibold">3. Копирование собранного портала в веб-директорию Apache (/var/www/html или htdocs в XAMPP):</p>
+                    <pre className="font-mono text-blue-400 whitespace-pre overflow-x-auto">
+{`# Копируем скомпилированные файлы React
+sudo cp -r dist/* /var/www/html/
+# Копируем правила маршрутизации и API скрипт
+sudo cp .htaccess api.php /var/www/html/
+# Устанавливаем права для веб-сервера
+sudo chown -R www-data:www-data /var/www/html/`}
+                    </pre>
+                    <button
+                      onClick={() =>
+                        copyToClipboard(
+                          'lamp-step3',
+                          'sudo cp -r dist/* /var/www/html/\nsudo cp .htaccess api.php /var/www/html/\nsudo chown -R www-data:www-data /var/www/html/'
+                        )
+                      }
+                      className="absolute top-2.5 right-2.5 px-2 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs flex items-center gap-1 transition-colors cursor-pointer"
+                    >
+                      {copiedKey === 'lamp-step3' ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Ready config files downloads */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {/* File 1: .htaccess */}
+                <div className="bg-slate-950 border border-slate-800 rounded-xl p-4 flex flex-col justify-between space-y-3">
+                  <div>
+                    <div className="flex items-center justify-between">
+                      <span className="font-mono text-xs font-bold text-blue-400 flex items-center gap-1.5">
+                        <FileCode className="w-4 h-4" />
+                        .htaccess
+                      </span>
+                      <span className="text-[10px] bg-slate-800 text-slate-400 px-1.5 py-0.5 rounded">Apache</span>
+                    </div>
+                    <p className="text-[11px] text-slate-400 mt-2">
+                      Маршрутизация Single Page Application, заголовки безопасности, сжатие Gzip и проксирование API.
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-2 pt-2 border-t border-slate-800/80">
+                    <button
+                      onClick={() => copyToClipboard('lamp-htaccess', APACHE_HTACCESS_CONTENT)}
+                      className="text-xs text-slate-400 hover:text-white flex items-center gap-1 cursor-pointer"
+                    >
+                      {copiedKey === 'lamp-htaccess' ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
+                      <span>Копировать</span>
+                    </button>
+                    <button
+                      onClick={() => handleDownloadSingleFile('.htaccess', APACHE_HTACCESS_CONTENT, 'text/plain')}
+                      className="text-xs text-blue-400 hover:text-blue-300 flex items-center gap-1 ml-auto cursor-pointer font-semibold"
+                    >
+                      <Download className="w-3.5 h-3.5" />
+                      <span>Скачать</span>
+                    </button>
+                  </div>
+                </div>
+
+                {/* File 2: schema-mysql.sql */}
+                <div className="bg-slate-950 border border-slate-800 rounded-xl p-4 flex flex-col justify-between space-y-3">
+                  <div>
+                    <div className="flex items-center justify-between">
+                      <span className="font-mono text-xs font-bold text-amber-400 flex items-center gap-1.5">
+                        <Database className="w-4 h-4" />
+                        schema-mysql.sql
+                      </span>
+                      <span className="text-[10px] bg-slate-800 text-slate-400 px-1.5 py-0.5 rounded">MySQL</span>
+                    </div>
+                    <p className="text-[11px] text-slate-400 mt-2">
+                      Схема базы данных с полнотекстовым индексом FULLTEXT и начальными материалами (включая SCTP).
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-2 pt-2 border-t border-slate-800/80">
+                    <button
+                      onClick={() => copyToClipboard('lamp-sql', MYSQL_SCHEMA_SQL)}
+                      className="text-xs text-slate-400 hover:text-white flex items-center gap-1 cursor-pointer"
+                    >
+                      {copiedKey === 'lamp-sql' ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
+                      <span>Копировать</span>
+                    </button>
+                    <button
+                      onClick={() => handleDownloadSingleFile('schema-mysql.sql', MYSQL_SCHEMA_SQL, 'text/sql')}
+                      className="text-xs text-amber-400 hover:text-amber-300 flex items-center gap-1 ml-auto cursor-pointer font-semibold"
+                    >
+                      <Download className="w-3.5 h-3.5" />
+                      <span>Скачать</span>
+                    </button>
+                  </div>
+                </div>
+
+                {/* File 3: api.php */}
+                <div className="bg-slate-950 border border-slate-800 rounded-xl p-4 flex flex-col justify-between space-y-3">
+                  <div>
+                    <div className="flex items-center justify-between">
+                      <span className="font-mono text-xs font-bold text-purple-400 flex items-center gap-1.5">
+                        <FileCode className="w-4 h-4" />
+                        api.php
+                      </span>
+                      <span className="text-[10px] bg-slate-800 text-slate-400 px-1.5 py-0.5 rounded">PHP PDO</span>
+                    </div>
+                    <p className="text-[11px] text-slate-400 mt-2">
+                      Автономный PHP-скрипт с защитой от SQL-инъекций через prepared statements для добавления и поиска статей.
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-2 pt-2 border-t border-slate-800/80">
+                    <button
+                      onClick={() => copyToClipboard('lamp-php', PHP_API_SCRIPT)}
+                      className="text-xs text-slate-400 hover:text-white flex items-center gap-1 cursor-pointer"
+                    >
+                      {copiedKey === 'lamp-php' ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
+                      <span>Копировать</span>
+                    </button>
+                    <button
+                      onClick={() => handleDownloadSingleFile('api.php', PHP_API_SCRIPT, 'text/x-php')}
+                      className="text-xs text-purple-400 hover:text-purple-300 flex items-center gap-1 ml-auto cursor-pointer font-semibold"
+                    >
+                      <Download className="w-3.5 h-3.5" />
+                      <span>Скачать</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* TAB 4: LOCAL PC */}
           {activeSubTab === 'local' && (
             <div className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
